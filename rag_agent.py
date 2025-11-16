@@ -1,3 +1,4 @@
+import os
 import json
 
 from mistralai import Mistral
@@ -5,12 +6,12 @@ from langchain_community.retrievers import ArxivRetriever
 from langchain_mistralai import ChatMistralAI
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 
-
 from llama_index import VectorStoreIndex, SimpleDirectoryReader, ServiceContext
 from llama_index.embeddings import LangchainEmbedding
 
-mistral_api_key = ""
-tavily_api_key = ""
+
+mistral_api_key = os.getenv('MISTRAL_API_KEY')
+tavily_api_key = os.getenv('TAVILY_API_KEY')
 
 docs=SimpleDirectoryReader(input_dir="/rag_data").load_data()
 
@@ -41,48 +42,6 @@ class RagAgent:
         self.interview_scope = interview_scope
         self.difficulty = difficulty
 
-    def get_next_interview_question(self, question=""):
-        prompt = f"Теперь ты выступаешь в роли системы-интревьюера, в которой хранится много вопросов с технических собеседований. \
-          Задай мне вопрос из сферы {self.interview_scope} со сложностью {self.difficulty}. \
-          Если возможно - приведи ПОДРОБНЫЙ ответ на этот вопрос, который ожидает интервьюер. \
-          Будь максимально аккуратен и не добавляй лишний текст. \
-          ФОРМАТ: json с полями question и answer. \
-          Оставь в поле answer "", если у тебя нет ответа на заднный вопрос."
-        
-        question = question if question else prompt
-        response = self.query_engine.query(question)
-        json_response = json.load(response)
-
-        question = json_response["question"]
-        detailed_answer = get_detailed_answer(question)
-        json_response["detailed_info"] = detailed_answer
-        return json_response
-
-    def check_answer_correctness(self, question, rag_answer, user_answer):
-        prompt = f"Ты - эксперт IT в области {self.interview_scope}, который проверяет правильность \
-                  и полноту ответов на вопросы собеседований. Тебе следует проверить, насколько качественный ответ для \
-                  уровня сложности {self.difficulty} был дан пользователем на вопрос. Сравни ответ пользователя и ответ rag. \
-                  Дай оценку, укажи на ошибки, если они есть, а затем приведи эталонный ответ на основе ответа rag и дополнительную \
-                  справочную информацию, если она есть. \
-                  ФОРМАТ ВХОДА: json с полями question, rag_answer, user_answer. \
-                  ФОРМАТ ОТВЕТА: \
-                  ОЦЕНКА \n\n НЕДОЧЕТЫ \n\n ПРАВИЛЬНЫЙ ОТВЕТ \n\n ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ"
-        
-        request = {"question": question, "rag_answer": rag_answer, "user_answer": user_answer}
-                   
-        response = self._client.chat.complete(
-            model=self._model,
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": request}
-            ]
-        )
-
-        return {
-            "answer": response.choices[0].message.content,
-            "contexts": [str(doc) for doc in docs]
-        }
-
     def get_detailed_answer(self, question: str):
         retriever = ArxivRetriever(load_max_docs=2)
         docs = retriever.invoke(question)
@@ -93,7 +52,8 @@ class RagAgent:
                   и полно, дотупным языком отвечет на вопросы технических собеседований и дает справочную информацию.\
                   Твоя задача - дать полный развернутый ответ на задаваемый вопрос или дополнить ответ, если он уже есть в запросе.\
                   ФОРМАТ ОТВЕТА: \
-                  КРАТКИЙ ОТВЕТ, КОТОРЫЙ УСТРОИТ ИНТЕРВЬЮЕРА \n\n ПОЛНЫЙ ОТВЕТ С ПОДРОБНЫМ ОБЪЯСНЕНИЕМ \
+                  laconic_ans: КРАТКИЙ ОТВЕТ, КОТОРЫЙ УСТРОИТ ИНТЕРВЬЮЕРА \n\n detailed_ans: ПОЛНЫЙ ОТВЕТ С ПОДРОБНЫМ ОБЪЯСНЕНИЕМ \
+                  Весь ответ должен быть дан на РУССКОМ языке (общеупотребимые термины сферы можно оставить на английском).\
                   ## Docs {docs_text}"
 
         response = self._client.chat.complete(
@@ -104,9 +64,50 @@ class RagAgent:
             ]
         )
 
-        return {
-            "answer": response.choices[0].message.content,
-            "contexts": [str(doc) for doc in docs]
-        }
+        return response.choices[0].message.content
+
+    def get_next_interview_question(self, question=""):
+        prompt = f"Теперь ты выступаешь в роли системы-интревьюера, в которой хранится много вопросов с технических собеседований. \
+          Задай мне вопрос из сферы {self.interview_scope} со сложностью {self.difficulty}. \
+          Если возможно - приведи ПОДРОБНЫЙ, но ЛАКОНИЧНЫЙ ответ на этот вопрос, который ожидает интервьюер. \
+          Будь максимально аккуратен и не добавляй лишний текст. \
+          ФОРМАТ: json с полями question и answer. \
+          Оставь в поле answer "", если у тебя нет ответа на заднный вопрос. \
+          Вопрос нужно задать на РУССКОМ языке (общеупотребимые термины сферы можно оставить на английском)"
+        
+        question = question if question else prompt
+        response = self.query_engine.query(question)
+        clean_response = response.response.replace('```json', '').replace('```', '').strip()
+        json_response = json.loads(clean_response)
+
+        question = json_response["question"]
+        detailed_answer = self.get_detailed_answer(question)
+        json_response["detailed_info"] = detailed_answer
+        return json_response
+
+    def check_answer_correctness(self, question, rag_answer, user_answer):
+        prompt = f"Ты - эксперт IT в области {self.interview_scope}, который проверяет правильность \
+                  и полноту ответов на вопросы собеседований. Тебе следует проверить, насколько качественный ответ для \
+                  уровня сложности {self.difficulty} был дан пользователем на вопрос. Сравни ответ пользователя и ответ rag. \
+                  Дай оценку, укажи на ошибки, если они есть, а затем приведи эталонный ответ на основе ответа rag и дополнительную \
+                  справочную информацию, если она есть. \
+                  ОБЯЗАТЕЛЬНО давай оценку так, как будто говоришь напрямую с учеником, обращаясь на вы. \
+                  Окажи поддежку, если ответ неверный, но не забывай про здоровую критику. Похвали, если ответ верный. \
+                  ФОРМАТ ВХОДА: json с полями question, rag_answer, user_answer. \
+                  ФОРМАТ ОТВЕТА: \
+                  ОЦЕНКА \n\n НЕДОЧЕТЫ \n\n ПРАВИЛЬНЫЙ ОТВЕТ \n\n ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ \
+                  Весь ответ должен быть дан на РУССКОМ языке (общеупотребимые термины сферы можно оставить на английском)."
+        
+        request = f"""'question': {question}, 'rag_answer': {rag_answer}, 'user_answer': {user_answer}"""
+                   
+        response = self._client.chat.complete(
+            model=self._model,
+            messages=[
+                {"role": "system", "content": prompt},
+                {"role": "user", "content": request}
+            ]
+        )
+
+        return response.choices[0].message.content
 
 rag_bot = RagAgent()
