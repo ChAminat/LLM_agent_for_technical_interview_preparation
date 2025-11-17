@@ -48,13 +48,18 @@ class RagAgent:
 
         docs_text = "\n\n".join([doc.page_content for doc in docs])
 
-        prompt = f"Ты - эксперт IT в области {self.interview_scope}, который подробно и \
+        prompt = f"""Ты - эксперт IT в области {self.interview_scope}, который подробно и \
                   и полно, дотупным языком отвечет на вопросы технических собеседований и дает справочную информацию.\
                   Твоя задача - дать полный развернутый ответ на задаваемый вопрос или дополнить ответ, если он уже есть в запросе.\
-                  ФОРМАТ ОТВЕТА: \
-                  laconic_ans: КРАТКИЙ ОТВЕТ, КОТОРЫЙ УСТРОИТ ИНТЕРВЬЮЕРА \n\n detailed_ans: ПОЛНЫЙ ОТВЕТ С ПОДРОБНЫМ ОБЪЯСНЕНИЕМ \
+                  Отвечай только на вопросы по теме собеседования!\
+
+                  ФОРМАТ ОТВЕТА: ПОЛНЫЙ ОТВЕТ С ПОДРОБНЫМ ОБЪЯСНЕНИЕМ, КОТОРЫЙ УСТРОИТ ИНТЕРВЬЮЕРА \
                   Весь ответ должен быть дан на РУССКОМ языке (общеупотребимые термины сферы можно оставить на английском).\
-                  ## Docs {docs_text}"
+
+                  ЗАМЕЧАНИЕ: Если тебя спросят на отвлеченную тему, вежливо ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ и расскажи про какую-нибудь другую полезную IT штуку, \
+                  связанную с {self.interview_scope} \
+                  (ВЕЖЛИВО ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ, а потом используй слова: Давайте я лучше раскажу вам про...) \
+                  ## Docs {docs_text}"""
 
         response = self._client.chat.complete(
             model=self._model,
@@ -81,8 +86,12 @@ class RagAgent:
         json_response = json.loads(clean_response)
 
         question = json_response["question"]
-        detailed_answer = self.get_detailed_answer(question)
-        json_response["detailed_info"] = detailed_answer
+        answer = json_response["answer"]
+        flag = 0 if answer != "" else 1
+        if flag:
+          detailed_answer = self.get_detailed_answer(question)
+          json_response["answer"] = self.get_detailed_answer(question)
+
         return json_response
 
     def check_answer_correctness(self, question, rag_answer, user_answer):
