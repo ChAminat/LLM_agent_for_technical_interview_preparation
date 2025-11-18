@@ -43,7 +43,7 @@ class RagAgent:
         self.interview_scope = interview_scope
         self.difficulty = difficulty
 
-    def get_detailed_answer(self, question: str):
+    def get_detailed_answer(self, question: str, message_history=""):
         retriever = ArxivRetriever(load_max_docs=2)
         docs = retriever.invoke(question)
 
@@ -60,7 +60,10 @@ class RagAgent:
                   ЗАМЕЧАНИЕ: Если тебя спросят на отвлеченную тему, вежливо ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ и расскажи про какую-нибудь другую полезную IT штуку, \
                   связанную с {self.interview_scope} \
                   (ВЕЖЛИВО ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ, а потом используй слова: Давайте я лучше расскажу вам про...) \
-                  ## Docs {docs_text}"""
+                  ## Docs {docs_text} \
+
+                  Если для ответа на вопрос нужно обратиться к истории сообщений: \
+                  ## Message_history {message_history}"""
 
         response = self._client.chat.complete(
             model=self._model,
@@ -88,10 +91,22 @@ class RagAgent:
 
         question = json_response["question"]
         answer = json_response["answer"]
+
         flag = 0 if answer != "" else 1
         if flag:
-          detailed_answer = self.get_detailed_answer(question)
-          json_response["answer"] = self.get_detailed_answer(question)
+            max_attempts = 3
+            for attempt in range(max_attempts):
+                try:
+
+                    detailed_answer = self.get_detailed_answer(question)
+                    json_response["answer"] = detailed_answer
+                    break
+
+                except Exception as e:
+                    print(f"Попытка {attempt + 1} не удалась: {e}")
+                    if attempt == max_attempts - 1:
+                        json_response["answer"] = "Не удалось получить ответ"
+                        raise
 
         return json_response
 
