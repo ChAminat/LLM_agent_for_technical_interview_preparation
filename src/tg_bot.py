@@ -40,8 +40,22 @@ class InterviewAgent:
         stop=stop_after_attempt(5),
         wait=wait_exponential(multiplier=1, min=1, max=10)
     )
-    def get_question_reliable(self):
-        return self.rag_agent.get_next_interview_question()
+    async def get_question_reliable(self, message_history):
+        return self.rag_agent.get_next_interview_question(message_history=message_history)
+
+    @retry(
+        stop=stop_after_attempt(5),
+        wait=wait_exponential(multiplier=1, min=1, max=10)
+    )
+    async def check_correctness_reliable(self, question, rag_ans, ans):
+        return self.rag_agent.check_answer_correctness(question, rag_ans, ans)
+
+    @retry(
+        stop=stop_after_attempt(5),
+        wait=wait_exponential(multiplier=1, min=1, max=10)
+    )
+    async def get_answer_reliable(self, question, message_history):
+        return self.rag_agent.get_detailed_answer(question, message_history)
 
     async def start_interview(self, user_data: dict) -> tuple[str, Any] | str:
         """Начало интервью с представлением"""
@@ -75,16 +89,26 @@ class InterviewAgent:
         }
         
         template = welcome_templates.get(position, welcome_templates["Data Science"])
+        user_data["asked_questions"] = []
+        question = await self.next_question(user_data, "")
+
+        return template.get(level, template["Junior"]), question
 
 
 
+    
+    async def next_question(self, user_data: dict, message_history) -> Any | str:
+        """Следующий вопрос на основе истории"""
+
+        attempts = 500
         try:
-            question = self.get_question_reliable()
-            user_data["asked_questions"] = []
-            user_data["asked_questions"].append(question)
-
-            return template.get(level, template["Junior"]), question
-
+            for _ in range(attempts):
+                question = await self.get_question_reliable(message_history)
+                if question['question'] not in user_data["asked_questions"]:
+                    user_data["asked_questions"].append(question['question'])
+                    return question
+            else:
+                return "Отлично! Мы обсудили основные темы. Хотите задать свой вопрос или завершить интервью?"
         except Exception as e:
             print(f"Все попытки не удались: {e}")
             return ("Произошла техническая ошибка! Проверьте подключение к интернету и попробуйте снова через "
@@ -92,55 +116,33 @@ class InterviewAgent:
 
 
 
-    
-    async def next_question(self, user_data: dict) -> str:
-        """Следующий вопрос на основе истории"""
-        session_questions = user_data.get("asked_questions", [])
-
-        attempts = 500
-        for _ in range(attempts):
-            question = self.get_question_reliable()
-            if question not in session_questions:
-                user_data["asked_questions"].append(question)
-                return question['question']
-        else:
-            return "Отлично! Мы обсудили основные темы. Хотите задать свой вопрос или завершить интервью?"
-
-        # Если все вопросы заданы
-
-    
-    async def ask_theory_question(self, user_question: str, user_data: dict) -> str:
+    async def ask_theory_question(self, user_question: str, message_history: dict) -> str:
         """Ответ на теоретический вопрос пользователя"""
-        position = user_data.get('position', 'Data Science')
-        
         try:
-            messages = [
-                {"role": "system", "content": f"Ты эксперт в {position}. Отвечай точно и понятно."},
-                {"role": "user", "content": f"Вопрос: {user_question}\n\nДай развернутый ответ с примерами."}
-            ]
-            
-            return await self._call_mistral(messages)
-        except:
-            fallback_answers = {
-                "data science": "Data Science - это междисциплинарная область, объединяющая статистику, машинное обучение и анализ данных для извлечения знаний из данных.",
-                "machine learning": "Machine Learning - это подраздел AI, focusing на разработке алгоритмов, которые могут обучаться на данных и делать предсказания.",
-                "overfitting": "Переобучение возникает когда модель слишком хорошо учится на тренировочных данных, но плохо обобщает на новые данные. Методы борьбы: регуляризация, кросс-валидация, упрощение модели.",
-                "cross validation": "Кросс-валидация - метод оценки модели, при котором данные разбиваются на k частей, модель тренируется на k-1 частях и валидируется на оставшейся. Повторяется k раз."
-            }
-            
-            user_question_lower = user_question.lower()
-            for key, answer in fallback_answers.items():
-                if key in user_question_lower:
-                    return answer
-            
-            return "Это интересный вопрос! Рекомендую изучить его подробнее в документации и специализированных ресурсах."
+            answer = await self.get_answer_reliable(user_question, message_history)
+            return answer
+
+        except Exception as e:
+            print(f"Все попытки не удались: {e}")
+            return ("Произошла техническая ошибка! Проверьте подключение к интернету и попробуйте снова через "
+                    "некоторое время")
     
-    async def analyze_answer(self, question: str, user_answer: str, user_data: dict) -> str:
+    async def analyze_answer(self, question: dict, user_answer: str) -> str:
         """Анализ ответа пользователя"""
         try:
+            analysis = await self.check_correctness_reliable(question['question'], question['answer'], user_answer)
+            return analysis
 
-        except:
+        except Exception as e:
+            print(f"Все попытки не удались: {e}")
+            return ("Произошла техническая ошибка! Проверьте подключение к интернету и попробуйте снова через "
+                    "некоторое время")
 
+    async def change_settings(self, user_data: dict):
+        position = user_data.get('position', 'Data Science')
+        level = user_data.get('level', 'Junior')
+        name = user_data.get('name', '')
+        self.rag_agent.set_user_info(name, position, level)
 
 
 interview_agent = InterviewAgent()
@@ -220,13 +222,14 @@ async def next_question_handler(message: Message) -> None:
     await message.answer("🔄 Формирую следующий вопрос...")
     
     next_question = await interview_agent.next_question(
-        session["user_data"]
+        session["user_data"], session["conversation_history"]
     )
     
     session["conversation_history"].append({"role": "interviewer", "content": next_question})
     session["current_question"] = next_question
     
-    await message.answer(next_question, reply_markup=get_interview_keyboard())
+    await message.answer(next_question['question'], reply_markup=get_interview_keyboard())
+
 
 @dp.message(F.text == "Задать вопрос ❓")
 @dp.message(Command("ask_question"))
@@ -364,7 +367,8 @@ async def handle_all_messages(message: Message) -> None:
         session["user_data"]["level"] = message.text
         session["step"] = "interview"
         session["user_data"]["asked_questions"] = []
-        
+        await interview_agent.change_settings(session["user_data"])
+
         await message.answer(
             f"✅ Уровень сложности изменен на: {message.text}\n"
             f"Начинаем новую сессию вопросов...",
@@ -377,6 +381,7 @@ async def handle_all_messages(message: Message) -> None:
         session["user_data"]["position"] = message.text
         session["step"] = "interview"
         session["user_data"]["asked_questions"] = []
+        await interview_agent.change_settings(session["user_data"])
         
         await message.answer(
             f"✅ Тема изменена на: {message.text}\n"
@@ -392,7 +397,9 @@ async def handle_all_messages(message: Message) -> None:
         session["conversation_history"].append({"role": "candidate", "content": user_answer})
         
         await message.answer("🔄 Анализирую ваш ответ...")
-        analysis = await interview_agent.analyze_answer(current_question, user_answer, session["user_data"])
+        analysis = await interview_agent.analyze_answer(current_question, user_answer)
+
+        session["conversation_history"].append({"role": "interviewer", "content": analysis})
         
         await message.answer(f"📝 Обратная связь:\n\n{analysis}")
         await message.answer("Используйте кнопки для продолжения:", reply_markup=get_interview_keyboard())
@@ -400,9 +407,13 @@ async def handle_all_messages(message: Message) -> None:
     elif current_step == "awaiting_question":
         user_question = message.text
         session["step"] = "interview"
+
+        session["conversation_history"].append({"role": "candidate", "content": user_question})
         
         await message.answer("🔄 Ищу ответ на ваш вопрос...")
-        answer = await interview_agent.ask_theory_question(user_question, session["user_data"])
+        answer = await interview_agent.ask_theory_question(user_question, session["conversation_history"])
+
+        session["conversation_history"].append({"role": "interviewer", "content": answer})
         
         await message.answer(f"📚 Ответ на ваш вопрос:\n\n{answer}")
         await message.answer("Продолжаем интервью:", reply_markup=get_interview_keyboard())

@@ -11,32 +11,25 @@ from llama_index.embeddings import LangchainEmbedding
 
 class RagAgent:
     def __init__(self, docs, mistral_api_key: str, model: str = "mistral-small-latest"):
-        print('внутри рага')
         self._client = Mistral(api_key=mistral_api_key)
         self._model = model
-        print('1')
 
         self.llm = ChatMistralAI(
             model=model,
             max_retries=2,
             api_key=mistral_api_key
         )
-        print('2')
 
         self.embed_model = LangchainEmbedding(HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2"))
-        print('3')
 
         self.service_context = ServiceContext.from_defaults(
             chunk_size=1024,
             llm=self.llm,
             embed_model=self.embed_model
         )
-        print('4')
 
         self.index=VectorStoreIndex.from_documents(docs, service_context=self.service_context)
-        print('5')
         self.query_engine=self.index.as_query_engine()
-        print('Инициализация рага завершена')
 
     def set_user_info(self, name, interview_scope, difficulty):
         self.name = name
@@ -46,7 +39,6 @@ class RagAgent:
     def get_detailed_answer(self, question: str, message_history=""):
         retriever = ArxivRetriever(load_max_docs=2)
         docs = retriever.invoke(question)
-
         docs_text = "\n\n".join([doc.page_content for doc in docs])
 
         prompt = f"""Ты - эксперт IT в области {self.interview_scope}, который подробно и \
@@ -56,15 +48,16 @@ class RagAgent:
 
                   ФОРМАТ ОТВЕТА: ПОЛНЫЙ ОТВЕТ С ПОДРОБНЫМ ОБЪЯСНЕНИЕМ, КОТОРЫЙ УСТРОИТ ИНТЕРВЬЮЕРА \
                   Весь ответ должен быть дан на РУССКОМ языке (общеупотребимые термины сферы можно оставить на английском).\
+                  НЕ используй формат MARKDOWN\
 
-                  ЗАМЕЧАНИЕ: Если тебя спросят на НЕ ОТНОСЯЩУЮСЯ К IT, К ТЕМЕ СОБЕСЕДОВАНИЯ ИЛИ ТЕХНИЧЕСКИМ СОБЕСЕДОВАНИЯМ И ИХ ФОРМАТУ В ЦЕЛОМ тему, вежливо ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ и расскажи про какую-нибудь другую полезную IT штуку, \
+                  ЗАМЕЧАНИЕ: Если тебя спросят на НЕ ОТНОСЯЩУЮСЯ К IT, К ТЕМЕ СОБЕСЕДОВАНИЯ ИЛИ ТЕХНИЧЕСКИМ СОБЕСЕДОВАНИЯМ И ИХ ФОРМАТУ В ЦЕЛОМ тему,\
+                   вежливо ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ и расскажи про какую-нибудь другую полезную IT штуку, \
                   связанную с {self.interview_scope} \
-                  (В такой ситауции ВЕЖЛИВО ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ, а потом используй слова: Давайте я лучше расскажу вам про...) \
+                  (В такой ситуации ВЕЖЛИВО ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ, а потом используй слова: Давайте я лучше расскажу вам про...) \
                   ## Docs {docs_text} \
 
                   Если для ответа на вопрос нужно обратиться к истории сообщений: \
                   ## Message_history {message_history}"""
-
         response = self._client.chat.complete(
             model=self._model,
             messages=[
@@ -74,13 +67,14 @@ class RagAgent:
         )
 
         return response.choices[0].message.content
+    
 
     def get_next_interview_question(self, question="", message_history=""):
         prompt = f"Теперь ты выступаешь в роли системы-интервьюера, в которой хранится много вопросов с технических собеседований. \
           Задай мне вопрос из сферы {self.interview_scope} со сложностью {self.difficulty}. \
           Если возможно - приведи ПОДРОБНЫЙ, но ЛАКОНИЧНЫЙ ответ на этот вопрос, который ожидает интервьюер. \
           Будь максимально аккуратен и не добавляй лишний текст. Важно, чтобы вопросы собеседования не повторялись! \
-          Можно задавать уточняющие вопросы, но смысл должен отличаться! Прежде, чем выбрать вопрос, проверь, не задавл ли ты его раньше в истории сообщений \
+          Можно задавать уточняющие вопросы, но смысл должен отличаться! Прежде, чем выбрать вопрос, проверь, не задавал ли ты его раньше в истории сообщений \
           ## ИСТОРИЯ СООБЩЕНИЙ: {message_history} \
           ФОРМАТ: json с полями question и answer. \
           Оставь в поле answer "", если у тебя нет ответа на заданный вопрос. \
@@ -99,7 +93,6 @@ class RagAgent:
             max_attempts = 3
             for attempt in range(max_attempts):
                 try:
-
                     detailed_answer = self.get_detailed_answer(question)
                     json_response["answer"] = detailed_answer
                     break
