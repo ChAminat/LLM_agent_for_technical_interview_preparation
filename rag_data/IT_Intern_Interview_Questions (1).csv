@@ -1,0 +1,308 @@
+ID,Question,Difficulty,Topic,Role,Answer
+1,"Em hãy giải thích khái niệm ""biến toàn cục"" và ""biến cục bộ""?",Dễ,Programming Fundamentals,Software Engineer,Biến toàn cục được khai báo ngoài tất cả các hàm và có thể được truy cập ở bất kỳ đâu trong chương trình. Biến cục bộ được khai báo trong một hàm và chỉ sử dụng trong phạm vi hàm đó.
+2,Sự khác nhau giữa array và linked list là gì?,Trung bình,Data Structure,Software Engineer,"Array có kích thước cố định, truy cập nhanh bằng chỉ số. Linked list có thể thay đổi kích thước linh hoạt, nhưng truy cập chậm hơn vì phải duyệt từng node."
+3,Em sẽ sử dụng sorting algorithm nào nếu dữ liệu gần như đã được sắp xếp?,Trung bình,Algorithms,Software Engineer,Insertion Sort hoạt động hiệu quả với dữ liệu gần như được sắp xếp vì độ phức tạp trung bình gần O(n).
+4,Em hãy viết một hàm Python để kiểm tra chuỗi Palindrome.,Trung bình,Coding,Software Engineer,def is_palindrome(s): return s == s[::-1]
+5,REST API là gì? So sánh với SOAP API.,Trung bình,Web & API,Software Engineer,"REST API là giao diện lập trình sử dụng HTTP, đơn giản và không trạng thái. SOAP API phức tạp hơn, sử dụng XML và cần nhiều cấu hình."
+6,Em hãy mô tả kiến trúc Client-Server.,Dễ,Computer Network,Software Engineer,Client gửi yêu cầu tới Server; Server xử lý và gửi phản hồi về Client. Đây là mô hình phân tán phổ biến.
+7,Em hãy giải thích mô hình supervised learning.,Dễ,Machine Learning Basics,Data Science,"Supervised learning là mô hình học có giám sát, huấn luyện trên dữ liệu đã có nhãn để dự đoán đầu ra."
+8,Sự khác biệt giữa classification và regression là gì?,Dễ,ML Task Types,Data Science,"Classification dự đoán nhãn phân loại (ví dụ: spam/không spam), còn regression dự đoán giá trị liên tục (ví dụ: giá nhà)."
+9,Em có biết về overfitting không? Em xử lý nó như thế nào?,Trung bình,Model Evaluation,Data Science,"Overfitting là hiện tượng mô hình học quá chi tiết và không tổng quát được. Có thể xử lý bằng regularization, cross-validation, hoặc tăng dữ liệu huấn luyện."
+10,Hãy nêu các bước xử lý dữ liệu trước khi đưa vào huấn luyện (data preprocessing).,Trung bình,Data Preparation,Data Science,"Các bước gồm: làm sạch dữ liệu, xử lý missing values, chuẩn hóa hoặc chuẩn hoá, mã hoá biến phân loại, chia train/test."
+11,"Một tập dữ liệu có 10,000 dòng, 20% dữ liệu bị thiếu. Em sẽ xử lý ra sao?",Khó,Data Imputation,Data Science,"Tuỳ loại dữ liệu: dùng mean/median cho số, dùng mode hoặc bỏ hàng, hoặc dùng kỹ thuật nâng cao như KNN imputation."
+12,Em hãy giải thích cách hoạt động của cây quyết định (Decision Tree).,Trung bình,Algorithms,Data Science,"Cây quyết định chia nhỏ dữ liệu dựa trên thuộc tính tối ưu tại mỗi node, theo tiêu chí như entropy hoặc Gini để dự đoán đầu ra."
+13,Khi nào nên sử dụng logistic regression thay vì linear regression?,Trung bình,Statistical Modeling,Data Science,"Logistic regression được dùng khi đầu ra là nhị phân (0/1), còn linear regression áp dụng cho đầu ra dạng liên tục."
+14,Em đã từng sử dụng thư viện nào trong Python để vẽ biểu đồ?,Dễ,Data Visualization,Data Science,"Matplotlib, Seaborn, Plotly là các thư viện phổ biến để vẽ biểu đồ trong Python."
+15,Git là gì? Em hay dùng lệnh nào trong Git?,Dễ,Version Control,Cả hai,"Git là hệ thống quản lý phiên bản. Các lệnh thường dùng: git init, git add, git commit, git push, git pull."
+16,SQL là gì? Em có thể viết một câu lệnh để lấy dữ liệu sinh viên điểm cao nhất?,Trung bình,Database,Cả hai,SQL là ngôn ngữ truy vấn cơ sở dữ liệu. Ví dụ: SELECT * FROM students ORDER BY score DESC LIMIT 1;
+17,Hãy mô tả cách em làm việc khi nhận task mới từ mentor.,Dễ,Soft Skills,Cả hai,"Em sẽ đọc kỹ yêu cầu, hỏi rõ nếu chưa hiểu, chia nhỏ công việc và bắt đầu thực hiện từng phần. Có gì vướng sẽ hỏi lại mentor."
+18,Em xử lý như thế nào khi không hiểu yêu cầu của task?,Dễ,Soft Skills,Cả hai,"Em sẽ chủ động hỏi lại mentor để làm rõ. Nếu có thể, em sẽ đề xuất ví dụ cụ thể để xác nhận đúng hiểu."
+19,Em từng làm project gì trong trường? Em đã học được gì từ đó?,Dễ,Experience,Cả hai,"Em từng làm project quản lý sinh viên bằng Python. Em học được cách làm việc nhóm, chia task, sử dụng Git, và viết tài liệu."
+20,Em đã bao giờ làm việc nhóm chưa? Vai trò của em là gì?,Dễ,Teamwork,Cả hai,Em từng làm nhóm trong môn học. Em đảm nhiệm việc code chính và hỗ trợ review cho các bạn khác.
+21,Hàm đệ quy là gì? Khi nào nên và không nên dùng?,Trung bình,Programming Fundamentals,Software Engineer,"Hàm đệ quy là hàm gọi lại chính nó. Nên dùng khi bài toán có tính chất phân rã giống nhau (như cây, backtracking). Không nên dùng nếu độ sâu quá lớn (gây tràn stack)."
+22,Em hãy viết hàm tính giai thừa trong Python bằng cả đệ quy và lặp.,Trung bình,Coding,Software Engineer,"def factorial(n): return 1 if n==0 else n*factorial(n-1)
+def fact_loop(n): result=1
+for i in range(1,n+1): result*=i
+return result"
+23,Big O notation là gì?,Dễ,Algorithms,Software Engineer,Big O là cách biểu diễn độ phức tạp thời gian hoặc không gian của thuật toán theo kích thước đầu vào.
+24,Sự khác biệt giữa stack và queue là gì?,Dễ,Data Structure,Software Engineer,"Stack là cấu trúc LIFO (Last In First Out), queue là FIFO (First In First Out)."
+25,Cách em debug một đoạn mã bị lỗi như thế nào?,Dễ,Debugging,Software Engineer,"In log, sử dụng debugger, kiểm tra giá trị biến từng bước để xác định vị trí lỗi. Có thể dùng breakpoint."
+26,ORM là gì? Có lợi ích gì khi dùng?,Trung bình,Database,Software Engineer,ORM (Object Relational Mapping) giúp ánh xạ giữa đối tượng trong code và bảng dữ liệu. Giảm việc viết SQL thủ công.
+27,Em hiểu gì về kiến trúc MVC?,Trung bình,Software Design,Software Engineer,"MVC gồm Model (dữ liệu), View (giao diện), Controller (điều khiển). Giúp phân tách trách nhiệm và dễ bảo trì."
+28,Biến thể của gradient descent là gì?,Khó,Optimization,Data Science,"Các biến thể gồm: Batch GD, Stochastic GD, Mini-batch GD, Adam, RMSProp."
+29,PCA là gì? Dùng để làm gì?,Trung bình,Dimensionality Reduction,Data Science,PCA là phương pháp giảm số chiều dữ liệu bằng cách giữ lại các thành phần chính có phương sai lớn nhất.
+30,Em có thể mô tả một pipeline xử lý dữ liệu trong Data Science?,Trung bình,Data Pipeline,Data Science,Gồm các bước: lấy dữ liệu → làm sạch → chuẩn hoá → phân tích đặc trưng → huấn luyện mô hình → đánh giá → deploy.
+31,Bias và variance là gì?,Trung bình,Model Evaluation,Data Science,Bias là lỗi do mô hình quá đơn giản. Variance là lỗi do mô hình quá nhạy với dữ liệu huấn luyện.
+32,Mean vs Median: khi nào dùng cái nào?,Dễ,Statistics,Data Science,Mean dùng khi dữ liệu phân phối đều. Median tốt hơn khi có outlier vì không bị ảnh hưởng.
+33,Làm sao em biết mô hình đang underfitting?,Trung bình,Model Evaluation,Data Science,Underfitting xảy ra khi cả train và test đều có lỗi cao. Có thể do mô hình quá đơn giản hoặc thiếu đặc trưng.
+34,Tại sao cần chuẩn hóa dữ liệu?,Dễ,Preprocessing,Data Science,"Chuẩn hóa giúp các đặc trưng có cùng thang đo, tránh mô hình bị lệch do một vài đặc trưng có giá trị lớn."
+35,Overfitting xảy ra khi nào?,Dễ,Model Evaluation,Data Science,"Overfitting xảy ra khi mô hình học thuộc dữ liệu huấn luyện quá mức, dẫn đến kém tổng quát với dữ liệu mới."
+36,Phân biệt giữa accuracy và F1-score?,Khó,Classification Metrics,Data Science,"Accuracy đo tỷ lệ đúng chung, còn F1-score cân bằng precision và recall, dùng tốt trong dữ liệu mất cân bằng."
+37,Em hãy viết một câu SQL để đếm số lượng sinh viên trong mỗi lớp.,Trung bình,SQL,Cả hai,"SELECT class, COUNT(*) FROM students GROUP BY class;"
+38,Em từng dùng scikit-learn bao giờ chưa? Các bước huấn luyện mô hình là gì?,Trung bình,ML Tooling,Data Science,Có: load data → train_test_split → chọn model → fit → predict → evaluate.
+39,Sự khác nhau giữa supervised và unsupervised learning?,Dễ,ML Types,Data Science,"Supervised dùng dữ liệu có nhãn. Unsupervised không có nhãn, dùng để phân cụm, giảm chiều."
+40,Hãy mô tả một tình huống em phải học một công nghệ mới và cách em tiếp cận.,Dễ,Soft Skills,Cả hai,"Em sẽ tìm tài liệu chính thức, xem video hướng dẫn, thực hành dự án nhỏ và hỏi người có kinh nghiệm."
+41,Em hiểu gì về CI/CD? Em từng sử dụng công cụ nào chưa?,Trung bình,DevOps,Software Engineer,"CI/CD là quy trình tích hợp liên tục và triển khai liên tục. Em có thể đã dùng GitHub Actions, Jenkins, hoặc GitLab CI."
+42,Pointer là gì? Em hãy mô tả một ví dụ dùng pointer trong C.,Trung bình,Programming Fundamentals,Software Engineer,Pointer là biến lưu địa chỉ của biến khác. Ví dụ: int *p; int a=5; p=&a;
+43,Sự khác biệt giữa HTTP và HTTPS?,Dễ,Web,Software Engineer,"HTTPS là phiên bản bảo mật của HTTP, sử dụng SSL/TLS để mã hóa dữ liệu."
+44,Multithreading là gì? Khi nào cần dùng?,Trung bình,Operating System,Software Engineer,"Multithreading cho phép chương trình thực thi nhiều luồng song song, dùng trong xử lý đồng thời như tải file, UI."
+45,Race condition là gì? Làm sao để tránh?,Khó,Operating System,Software Engineer,Race condition xảy ra khi hai luồng truy cập và thay đổi dữ liệu chung mà không có đồng bộ. Có thể tránh bằng mutex/lock.
+46,Sự khác nhau giữa TCP và UDP?,Trung bình,Computer Network,Software Engineer,"TCP đảm bảo độ tin cậy, tuần tự, kiểm tra lỗi. UDP nhanh hơn nhưng không đảm bảo thứ tự và không kiểm tra lỗi."
+47,Deadlock là gì? Khi nào xảy ra?,Khó,Operating System,Software Engineer,"Deadlock xảy ra khi hai hoặc nhiều tiến trình chờ nhau giải phóng tài nguyên, dẫn đến treo vĩnh viễn."
+48,Tại sao cần dùng hash table? Ưu điểm là gì?,Trung bình,Data Structure,Software Engineer,"Hash table cho phép tra cứu, chèn, xoá trong O(1) trung bình, rất hiệu quả cho các thao tác dữ liệu nhanh."
+49,Sự khác nhau giữa GET và POST trong HTTP?,Dễ,Web,Software Engineer,"GET gửi dữ liệu qua URL, dùng để truy xuất. POST gửi trong body, thường dùng để cập nhật hoặc tạo mới."
+50,Lambda function trong Python là gì?,Dễ,Programming,Software Engineer,"Là hàm ẩn danh, khai báo nhanh. Ví dụ: lambda x: x + 1"
+51,Định lý Bayes là gì? Ứng dụng trong Data Science?,Trung bình,Probability,Data Science,"Bayes giúp tính xác suất ngược. Ứng dụng trong phân loại Naive Bayes, chẩn đoán y học."
+52,Cross-validation là gì? Vì sao cần dùng?,Trung bình,Model Evaluation,Data Science,"Cross-validation chia dữ liệu nhiều lần để đánh giá độ ổn định mô hình, tránh overfitting."
+53,Random Forest là gì? Khác gì với Decision Tree?,Trung bình,ML Algorithms,Data Science,"Random Forest là tập hợp nhiều cây quyết định, dùng voting để cải thiện độ chính xác và giảm overfitting."
+54,Gradient vanishing là gì? Gặp trong mạng nào?,Khó,Deep Learning,Data Science,"Gradient vanishing là hiện tượng đạo hàm rất nhỏ, mô hình không học được. Gặp nhiều trong RNN, dùng ReLU hoặc LSTM để khắc phục."
+55,MSE và MAE khác nhau thế nào?,Trung bình,Regression Metrics,Data Science,"MSE nhấn mạnh lỗi lớn (bình phương), MAE nhấn mạnh tổng sai số. MSE nhạy cảm với outlier."
+56,Hàm sigmoid và softmax khác nhau như thế nào?,Trung bình,Activation Function,Data Science,"Sigmoid cho đầu ra từ 0–1, dùng cho nhị phân. Softmax cho phân phối xác suất đa lớp."
+57,Em hãy mô tả kiến trúc CNN cơ bản.,Trung bình,Deep Learning,Data Science,Gồm các lớp convolution → activation (ReLU) → pooling → flatten → fully connected → output.
+58,Sự khác nhau giữa batch size và epoch?,Dễ,Training Concepts,Data Science,Batch size là số mẫu xử lý một lần. Epoch là số lần toàn bộ dữ liệu đi qua mô hình.
+59,Em hiểu gì về one-hot encoding và label encoding?,Trung bình,Preprocessing,Data Science,One-hot tạo vector nhị phân. Label encoding chuyển giá trị thành số nguyên.
+60,T-SNE dùng để làm gì? Có điểm yếu gì?,Khó,Dimensionality Reduction,Data Science,"T-SNE giúp trực quan hoá dữ liệu nhiều chiều. Nhược điểm: chậm, không giữ cấu trúc toàn cục."
+61,Các yếu tố đánh giá một mô hình học máy tốt là gì?,Trung bình,Model Evaluation,Data Science,"Độ chính xác, khả năng tổng quát, tốc độ huấn luyện, khả năng giải thích."
+62,Trực giác của thuật toán K-means là gì?,Trung bình,Unsupervised Learning,Data Science,K-means chia dữ liệu thành K cụm gần nhau nhất dựa vào khoảng cách với centroid.
+63,Mini-batch gradient descent giúp cải thiện gì?,Trung bình,Optimization,Data Science,"Kết hợp ưu điểm của Batch và Stochastic GD: nhanh hơn, ổn định hơn."
+64,Dropout là gì? Dùng để làm gì?,Trung bình,Regularization,Data Science,Dropout là kỹ thuật bỏ ngẫu nhiên một số neuron trong quá trình huấn luyện để giảm overfitting.
+65,Cosine similarity là gì? Ứng dụng?,Trung bình,Similarity Metrics,Data Science,"Đo độ tương đồng góc giữa 2 vector. Ứng dụng trong NLP, hệ thống gợi ý."
+66,Bagging và Boosting khác nhau ra sao?,Khó,Ensemble Learning,Data Science,"Bagging huấn luyện song song trên các tập con. Boosting huấn luyện tuần tự, mẫu sai được chú trọng hơn."
+67,Phân biệt giữa primary key và foreign key?,Dễ,Database,Cả hai,Primary key là khóa chính định danh bản ghi. Foreign key là khóa ngoại liên kết với bảng khác.
+68,Em sẽ làm gì nếu mô hình có độ chính xác cao nhưng recall thấp?,Trung bình,Model Tuning,Data Science,"Cần cân bằng lại loss function hoặc điều chỉnh threshold, có thể dùng F1-score thay vì accuracy."
+69,Sự khác nhau giữa NoSQL và SQL?,Trung bình,Database,Cả hai,"SQL có cấu trúc bảng rõ ràng, ACID. NoSQL linh hoạt hơn, dùng JSON, hiệu quả với dữ liệu phi cấu trúc."
+70,Data drift là gì? Làm sao phát hiện?,Khó,Data Monitoring,Data Science,Data drift là sự thay đổi phân phối dữ liệu theo thời gian. Phát hiện bằng so sánh thống kê phân phối train/test.
+71,Em sẽ làm gì khi gặp project mà em chưa có kinh nghiệm?,Dễ,Soft Skills,Cả hai,"Em sẽ tìm hiểu trước, chia nhỏ từng phần, hỏi mentor, và học từ tài liệu hoặc project tương tự."
+72,Em xử lý thế nào nếu bị conflict khi dùng Git?,Dễ,Version Control,Cả hai,"Dùng git status để kiểm tra, chỉnh sửa file bị conflict, rồi git add và git commit để hoàn tất merge."
+73,Em sẽ làm gì nếu teammate viết code thiếu rõ ràng?,Dễ,Teamwork,Cả hai,"Góp ý nhẹ nhàng, đề xuất refactor hoặc tuân theo coding convention chung."
+74,Em đã từng phải tự học công nghệ nào để hoàn thành task chưa?,Dễ,Self-learning,Cả hai,"Có, em từng tự học Flask qua tài liệu chính thức và YouTube để build backend cho project."
+75,Khác biệt giữa class và object trong OOP?,Dễ,OOP,Software Engineer,Class là khuôn mẫu. Object là thể hiện cụ thể của class.
+76,Constructor là gì? Em có dùng trong Python chưa?,Dễ,OOP,Software Engineer,Constructor là hàm khởi tạo (__init__) dùng để khởi tạo giá trị thuộc tính khi tạo object.
+77,Polymorphism là gì? Cho ví dụ?,Trung bình,OOP,Software Engineer,"Polymorphism là tính đa hình, ví dụ: nhiều class có method cùng tên nhưng thực thi khác nhau."
+78,Exception handling là gì? Dùng thế nào trong Python?,Trung bình,Error Handling,Software Engineer,"Dùng try-except để xử lý lỗi. Ví dụ: try: x=1/0 except ZeroDivisionError: print(""Lỗi chia 0"")"
+79,RESTful API cần tuân thủ những nguyên tắc nào?,Trung bình,Web/API,Software Engineer,"Tuân thủ stateless, sử dụng các HTTP methods đúng cách, định danh resource bằng URI."
+80,Em từng deploy ứng dụng ở đâu? Quy trình ra sao?,Trung bình,Deployment,Cả hai,"Em từng deploy bằng Heroku/AWS. Quy trình gồm: chuẩn bị mã, push code, thiết lập môi trường, kiểm tra kết quả."
+81,Em hiểu gì về SOLID principles trong lập trình hướng đối tượng?,Khó,OOP,Software Engineer,"SOLID gồm 5 nguyên lý: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion."
+82,Khi nào nên dùng interface thay vì abstract class?,Khó,OOP,Software Engineer,Dùng interface khi muốn định nghĩa hành vi mà nhiều class khác nhau có thể thực thi mà không cần chia sẻ code.
+83,Design pattern là gì? Kể tên một vài loại phổ biến.,Trung bình,Software Design,Software Engineer,"Design pattern là giải pháp mẫu cho các vấn đề thiết kế. Ví dụ: Singleton, Factory, Observer, Strategy."
+84,Sự khác nhau giữa synchronous và asynchronous?,Trung bình,Concurrency,Software Engineer,Synchronous: chờ kết quả xong mới tiếp tục. Asynchronous: tiếp tục xử lý mà không cần chờ kết quả.
+85,Memory leak là gì? Cách phát hiện?,Khó,Memory Management,Software Engineer,Memory leak xảy ra khi bộ nhớ không được giải phóng sau khi sử dụng. Phát hiện bằng profiling tools.
+86,Immutable object là gì? Lợi ích của nó?,Trung bình,Programming,Software Engineer,"Là đối tượng không thể thay đổi sau khi tạo. Giúp thread-safe, dễ debug."
+87,Tại sao nên viết test? Các loại test phổ biến?,Dễ,Testing,Cả hai,"Viết test giúp đảm bảo chất lượng code. Có unit test, integration test, system test."
+88,Em có biết về TDD không? Quy trình là gì?,Trung bình,Testing,Software Engineer,TDD (Test-Driven Development): viết test → viết code → chạy test → refactor.
+89,Yêu cầu chức năng và phi chức năng khác nhau thế nào?,Trung bình,Software Engineering,Cả hai,"Chức năng là tính năng hệ thống cần làm. Phi chức năng là hiệu năng, bảo mật, khả năng mở rộng,..."
+90,Làm thế nào để em ưu tiên task khi deadline gần?,Dễ,Soft Skills,Cả hai,"Xác định việc gấp và quan trọng, chia nhỏ công việc, tập trung xử lý phần lõi trước."
+91,LSTM là gì? Khác gì với RNN thường?,Khó,Deep Learning,Data Science,LSTM là một dạng RNN khắc phục vấn đề gradient vanishing bằng cách dùng cổng ghi nhớ.
+92,Word2Vec hoạt động như thế nào?,Khó,NLP,Data Science,Word2Vec học vector biểu diễn từ bằng cách dự đoán ngữ cảnh (CBOW) hoặc từ (Skip-Gram).
+93,Stop words là gì? Có nên loại bỏ trong NLP không?,Trung bình,NLP,Data Science,"Stop words là các từ phổ biến như “là”, “và”. Thường bị loại bỏ để giảm nhiễu."
+94,Sự khác nhau giữa stemming và lemmatization?,Trung bình,NLP,Data Science,"Stemming cắt đuôi từ, lemmatization đưa về dạng gốc ngữ pháp. Lemmatization chính xác hơn."
+95,TF-IDF là gì? Dùng để làm gì?,Trung bình,NLP,Data Science,TF-IDF đo tầm quan trọng của từ trong tài liệu. Dùng để vector hóa văn bản.
+96,Confusion matrix gồm những gì?,Dễ,Classification Metrics,Data Science,"TP, FP, FN, TN – giúp tính precision, recall, F1-score,..."
+97,ROC-AUC là gì? Ý nghĩa?,Trung bình,Model Evaluation,Data Science,ROC-AUC đo khả năng phân biệt giữa các lớp. AUC càng cao càng tốt.
+98,Điểm khác nhau giữa batch normalization và layer normalization?,Khó,Deep Learning,Data Science,"Batch norm dùng thống kê theo batch, layer norm theo từng sample. Layer norm tốt hơn trong RNN."
+99,Hàm activation nào hay dùng nhất hiện nay?,Dễ,Deep Learning,Data Science,"ReLU vì đơn giản, tính toán nhanh, ít gây vanishing gradient."
+100,Early stopping là gì? Khi nào nên dùng?,Trung bình,Regularization,Data Science,"Early stopping dừng huấn luyện khi độ lỗi validation không cải thiện, tránh overfitting."
+101,Hệ điều hành quản lý bộ nhớ như thế nào?,Khó,Operating System,Software Engineer,"Dùng paging, segmentation, virtual memory để phân phối và bảo vệ bộ nhớ."
+102,Virtual memory là gì?,Trung bình,Operating System,Software Engineer,"Là kỹ thuật dùng bộ nhớ phụ (disk) để mở rộng RAM ảo, cho phép chương trình lớn hơn bộ nhớ thật."
+103,Docker là gì? Em từng dùng chưa?,Trung bình,DevOps,Cả hai,Docker là nền tảng container hóa ứng dụng. Em từng dùng để chạy ứng dụng độc lập môi trường.
+104,Kubernetes dùng để làm gì?,Khó,DevOps,Cả hai,"Orchestration cho các container: quản lý, mở rộng, cập nhật ứng dụng."
+105,Cache là gì? Tại sao quan trọng?,Dễ,System Design,Cả hai,"Cache là bộ nhớ tạm để truy xuất dữ liệu nhanh. Giảm độ trễ, tăng hiệu suất."
+106,CDN là gì? Tăng tốc trang web ra sao?,Trung bình,Web Performance,Software Engineer,"CDN phân phối nội dung qua nhiều server gần người dùng, giảm thời gian tải."
+107,SQL injection là gì? Cách phòng tránh?,Trung bình,Security,Cả hai,Tấn công qua chèn câu lệnh SQL. Phòng bằng cách dùng prepared statements.
+108,XSS là gì? Nguy hiểm như thế nào?,Trung bình,Security,Software Engineer,"Cross-site scripting cho phép chèn script vào trang web. Gây rò rỉ thông tin, chiếm quyền người dùng."
+109,OAuth2 là gì?,Khó,Authentication,Software Engineer,OAuth2 là giao thức uỷ quyền truy cập tài nguyên của người dùng cho ứng dụng thứ ba.
+110,JWT dùng để làm gì?,Trung bình,Authentication,Software Engineer,"JWT là token xác thực dạng JSON, dùng trong xác thực API."
+111,CORS là gì?,Trung bình,Web Security,Software Engineer,CORS kiểm soát truy cập giữa các domain khác nhau trong trình duyệt.
+112,Làm sao để đảm bảo REST API an toàn?,Khó,Security,Software Engineer,"Xác thực bằng token, giới hạn request, mã hóa HTTPS, kiểm tra input."
+113,Phân biệt CPU-bound và I/O-bound?,Trung bình,System Performance,Software Engineer,"CPU-bound bị giới hạn bởi xử lý, I/O-bound bị giới hạn bởi đọc ghi file, network."
+114,Semaphore là gì? Khác mutex?,Khó,Concurrency,Software Engineer,"Semaphore đếm tài nguyên, mutex đảm bảo chỉ một luồng truy cập."
+115,Unit test là gì? Em đã viết bao giờ chưa?,Dễ,Testing,Cả hai,"Unit test kiểm tra chức năng nhỏ nhất của code. Em đã viết bằng unittest, pytest."
+116,Jupyter Notebook có điểm mạnh gì?,Dễ,Tools,Data Science,"Giao diện tương tác, thuận tiện thử nghiệm, trực quan hóa kết quả."
+117,Khi nào cần feature engineering?,Trung bình,Preprocessing,Data Science,"Khi dữ liệu gốc chưa đủ thông tin, cần tạo đặc trưng mới từ dữ liệu hiện có."
+118,Hyperparameter tuning là gì?,Trung bình,Model Tuning,Data Science,"Quá trình tìm cấu hình tham số tối ưu: learning rate, batch size, số tầng,..."
+119,Grid search vs Random search?,Khó,Model Tuning,Data Science,"Grid search thử toàn bộ tổ hợp. Random search chọn ngẫu nhiên, tiết kiệm thời gian hơn."
+120,Làm sao để scale mô hình ML ra production?,Khó,MLOps,Data Science,"Dùng pipeline, deploy qua API, monitoring hiệu suất, cập nhật theo thời gian."
+121,Kaggle là gì? Em có từng tham gia không?,Dễ,Competition,Data Science,Kaggle là nền tảng thi đấu và học ML. Em từng tham gia để rèn kỹ năng.
+122,Cross entropy là gì?,Trung bình,Loss Function,Data Science,"Là hàm mất mát dùng trong classification, đo độ lệch giữa dự đoán và thực tế."
+123,Hàm loss và metric khác nhau thế nào?,Trung bình,Training,Data Science,"Loss dùng để tối ưu, metric dùng để đánh giá kết quả."
+124,Bias-variance tradeoff là gì?,Trung bình,Theory,Data Science,Là sự cân bằng giữa underfitting (bias cao) và overfitting (variance cao).
+125,Điều gì quan trọng nhất trong việc chọn mô hình ML?,Trung bình,Model Selection,Data Science,"Phụ thuộc vào loại bài toán, độ phức tạp, dữ liệu, thời gian huấn luyện và độ chính xác."
+126,Thế nào là dữ liệu mất cân bằng? Ảnh hưởng ra sao?,Trung bình,Data Quality,Data Science,"Một lớp chiếm số lượng lớn. Ảnh hưởng độ chính xác, mô hình thiên lệch."
+127,SMOTE là gì?,Khó,Data Augmentation,Data Science,Synthetic Minority Over-sampling Technique – tạo mẫu mới từ dữ liệu thiểu số.
+128,Pipeline trong sklearn giúp ích gì?,Trung bình,ML Tooling,Data Science,Giúp kết hợp các bước tiền xử lý và mô hình vào một luồng duy nhất.
+129,Mô hình nào phù hợp dữ liệu nhỏ và dễ giải thích?,Trung bình,Model Selection,Data Science,"Decision Tree, Logistic Regression thường phù hợp."
+130,Feature selection là gì? Cách thực hiện?,Trung bình,Feature Engineering,Data Science,"Là chọn những đặc trưng quan trọng. Dùng phương pháp thống kê, recursive feature elimination, tree-based."
+131,Em có thể giải thích sự khác biệt giữa shallow copy và deep copy trong Python?,Trung bình,Programming,Software Engineer,Shallow copy sao chép đối tượng gốc nhưng tham chiếu đến các đối tượng con. Deep copy sao chép toàn bộ cả đối tượng và các đối tượng lồng bên trong.
+132,Em hãy mô tả cách hoạt động của garbage collector trong Python.,Trung bình,Memory Management,Software Engineer,Garbage collector tự động thu hồi bộ nhớ không còn tham chiếu nào. Python dùng kỹ thuật đếm tham chiếu và phát hiện vòng tham chiếu.
+133,"Lambda, map, filter và reduce là gì?",Trung bình,Functional Programming,Software Engineer,"Là các công cụ lập trình hàm. lambda tạo hàm ẩn danh, map áp dụng hàm cho từng phần tử, filter lọc phần tử, reduce gộp dữ liệu."
+134,"Sự khác nhau giữa list, tuple và set trong Python?",Dễ,Data Structures,Software Engineer,"List thay đổi được, tuple không thay đổi, set là tập hợp không thứ tự và không có phần tử trùng lặp."
+135,Em hãy viết class đơn giản trong Python có thuộc tính và method.,Dễ,OOP,Software Engineer,"class Student:
+    def __init__(self, name):
+        self.name = name
+    def greet(self):
+        print(f""Hello {self.name}"")"
+136,Thế nào là callback function trong JavaScript?,Trung bình,Web Programming,Software Engineer,Là hàm được truyền như đối số vào hàm khác và gọi lại khi xong việc. Dùng nhiều trong async code.
+137,Difference between null and undefined in JavaScript?,Trung bình,Web Programming,Software Engineer,undefined là biến được khai báo nhưng chưa gán. null là giá trị rỗng có chủ đích.
+138,Event loop hoạt động như thế nào trong JavaScript?,Khó,Concurrency,Software Engineer,"Event loop xử lý callback từ queue sau khi stack rỗng, giúp xử lý bất đồng bộ."
+139,DOM là gì? Em đã thao tác DOM như thế nào?,Dễ,Web Programming,Software Engineer,"DOM là cây biểu diễn tài liệu HTML. Em dùng JS để thêm/xóa/sửa phần tử qua document.querySelector, innerHTML,..."
+140,Cách để tối ưu website frontend?,Trung bình,Web Performance,Software Engineer,"Dùng lazy loading, giảm số request, minify file, dùng cache, CDN,..."
+141,Em có thể giải thích sự khác nhau giữa batch gradient descent và stochastic gradient descent?,Trung bình,Optimization,Data Science,"Batch GD dùng toàn bộ dữ liệu cho mỗi bước cập nhật. SGD dùng một điểm dữ liệu, học nhanh hơn nhưng nhiễu hơn."
+142,Mini-batch GD hoạt động như thế nào?,Trung bình,Optimization,Data Science,Chia tập dữ liệu thành các lô nhỏ. Vừa tối ưu hiệu năng vừa giữ ổn định.
+143,Data augmentation là gì? Ví dụ trong ảnh?,Trung bình,Preprocessing,Data Science,"Là kỹ thuật nhân dữ liệu huấn luyện như xoay, lật, nhiễu,... giúp mô hình tổng quát hơn."
+144,Regularization là gì? L1 và L2 khác nhau ra sao?,Trung bình,Model Tuning,Data Science,"L1 tạo sparsity (Lasso), L2 làm nhỏ trọng số (Ridge). Giúp tránh overfitting."
+145,Precision và recall nên dùng khi nào?,Trung bình,Classification Metrics,Data Science,Precision quan trọng khi sai dương nguy hiểm (VD: spam). Recall quan trọng khi cần phát hiện hết (VD: ung thư).
+146,Grid Search hoạt động ra sao? Có điểm yếu gì?,Khó,Model Tuning,Data Science,Thử tất cả tổ hợp tham số. Chính xác nhưng tốn thời gian.
+147,Random Search khác gì với Grid Search?,Trung bình,Model Tuning,Data Science,"Random search chọn ngẫu nhiên một số tổ hợp, tiết kiệm thời gian."
+148,Em có hiểu về Bayesian Optimization?,Khó,Model Tuning,Data Science,"Là kỹ thuật tối ưu hàm mục tiêu dựa trên xác suất, tìm điểm tốt nhất với ít lần thử."
+149,Confounding variable là gì?,Khó,Statistics,Data Science,Biến gây nhiễu mối quan hệ giữa biến độc lập và phụ thuộc.
+150,Sự khác nhau giữa parametric và non-parametric model?,Khó,Theory,Data Science,Parametric có số lượng tham số cố định (VD: LR). Non-parametric không giả định phân phối cố định (VD: KNN).
+151,Bias trong dữ liệu là gì? Em xử lý thế nào?,Trung bình,Ethics,Data Science,"Bias là thiên lệch dữ liệu, có thể làm mô hình không công bằng. Cần kiểm tra và cân bằng lại."
+152,Explain A/B testing.,Dễ,Experimentation,Data Science,So sánh hai phiên bản để chọn phiên bản có hiệu quả tốt hơn dựa trên dữ liệu thực nghiệm.
+153,Khi nào dùng t-test? Điều kiện áp dụng?,Trung bình,Statistics,Data Science,"Dùng để so sánh trung bình 2 nhóm. Cần phân phối chuẩn, độc lập, phương sai tương đương."
+154,Central Limit Theorem là gì?,Trung bình,Statistics,Data Science,"Cho dù phân phối gốc là gì, trung bình mẫu sẽ gần phân phối chuẩn nếu đủ lớn."
+155,Thế nào là correlation vs causation?,Dễ,Statistics,Data Science,Correlation là mối quan hệ tuyến tính. Causation là quan hệ nguyên nhân – kết quả.
+156,Thế nào là p-value?,Trung bình,Statistics,Data Science,Xác suất quan sát kết quả nếu giả thuyết gốc đúng. P nhỏ => bác bỏ H0.
+157,Overfitting xảy ra trong trường hợp nào?,Dễ,Model Evaluation,Data Science,"Mô hình học quá sát dữ liệu train, không tổng quát được."
+158,Underfitting là gì?,Dễ,Model Evaluation,Data Science,"Mô hình quá đơn giản, không học được quy luật."
+159,Làm sao phát hiện outlier?,Trung bình,Data Cleaning,Data Science,"Dùng IQR, Z-score, hoặc visualization để phát hiện điểm bất thường."
+160,Xử lý missing values như thế nào?,Dễ,Data Cleaning,Data Science,"Dùng mean, median, drop hoặc dùng mô hình học để dự đoán."
+161,Em biết gì về Apache Spark?,Khó,Big Data,Data Science,"Là framework xử lý dữ liệu lớn phân tán, nhanh hơn Hadoop. Hỗ trợ batch và streaming."
+162,Khi nào dùng Gaussian Naive Bayes?,Trung bình,ML Algorithms,Data Science,Khi dữ liệu liên tục và giả định phân phối chuẩn theo mỗi đặc trưng.
+163,Bagging vs Boosting: em chọn gì cho dữ liệu nhiễu?,Khó,Ensemble,Data Science,Bagging tốt hơn vì giảm variance. Boosting có thể overfit nếu dữ liệu quá nhiễu.
+164,Khi nào chọn Logistic Regression?,Dễ,Model Selection,Data Science,"Bài toán nhị phân, ít đặc trưng, dễ giải thích."
+165,Khi nào dùng SVM?,Trung bình,Model Selection,Data Science,"Dữ liệu phân tách rõ, hoặc cần kernel trick để phân lớp phi tuyến."
+166,K-means có nhược điểm gì?,Trung bình,Clustering,Data Science,"Nhạy cảm với khởi tạo, không tốt với cụm không hình cầu."
+167,Làm sao đánh giá clustering?,Trung bình,Clustering,Data Science,"Dùng silhouette score, Davies-Bouldin Index hoặc so với ground truth."
+168,Text vectorization là gì?,Trung bình,NLP,Data Science,"Biến văn bản thành vector số: TF-IDF, Word2Vec, BERT,..."
+169,Thế nào là leaky ReLU?,Trung bình,Activation Function,Data Science,"Là biến thể của ReLU, cho phép gradient nhỏ khi đầu vào âm để tránh dead neuron."
+170,Batch size ảnh hưởng thế nào đến training?,Trung bình,Training,Data Science,"Batch lớn: học ổn định, cần RAM nhiều. Batch nhỏ: nhanh hơn nhưng nhiễu hơn."
+171,Cross entropy loss có nhược điểm gì?,Trung bình,Loss Function,Data Science,"Nhạy cảm với mẫu bị phân loại sai nặng, dễ overfit nếu dữ liệu nhiễu."
+172,Khi nào dùng ensemble learning?,Trung bình,Model Tuning,Data Science,Khi muốn kết hợp nhiều mô hình để tăng độ chính xác và giảm overfitting.
+173,Có thể dùng Linear Regression cho classification không?,Khó,Theory,Data Science,"Không nên vì dự đoán không nằm trong [0,1]. Dùng Logistic Regression phù hợp hơn."
+174,"Thế nào là ""curse of dimensionality""?",Khó,Dimensionality,Data Science,"Số chiều cao làm dữ liệu loãng, giảm hiệu quả của mô hình."
+175,Xử lý dữ liệu categorical như thế nào?,Trung bình,Preprocessing,Data Science,"Label encoding, one-hot, target encoding,..."
+176,PCA có nhược điểm gì?,Trung bình,Dimensionality Reduction,Data Science,"Không giữ thông tin nhãn, chỉ tốt khi dữ liệu tuyến tính."
+177,Accuracy có thể đánh lừa khi nào?,Trung bình,Evaluation,Data Science,"Khi dữ liệu mất cân bằng, accuracy cao không phản ánh mô hình tốt."
+178,T-SNE phù hợp cho việc gì?,Dễ,Visualization,Data Science,Giảm chiều và trực quan hóa dữ liệu trong 2D/3D.
+179,Dữ liệu thời gian có đặc điểm gì?,Trung bình,Time Series,Data Science,"Có tính tuần tự, phụ thuộc thời điểm, cần xử lý trễ (lag), xu hướng (trend)."
+180,ARIMA là gì?,Khó,Time Series,Data Science,"Là mô hình dự báo chuỗi thời gian gồm phần tự hồi quy (AR), trung bình trượt (MA) và khác biệt hoá (I)."
+181,"Sự khác biệt giữa ""=="" và ""is"" trong Python là gì?",Dễ,Programming,Software Engineer,"`==` so sánh giá trị của hai đối tượng, trong khi `is` kiểm tra xem hai biến có cùng trỏ đến một đối tượng trong bộ nhớ hay không."
+182,"Giải thích khái niệm ""duck typing"" trong Python.",Trung bình,Programming,Software Engineer,"Duck typing là một khái niệm trong đó kiểu của một đối tượng được xác định bởi sự hiện diện của các phương thức và thuộc tính nhất định, thay vì kế thừa từ một lớp cụ thể."
+183,Generator trong Python là gì và nó khác với list như thế nào?,Trung bình,Programming,Software Engineer,"Generator tạo ra các mục một cách lười biếng (lazy evaluation), tức là chỉ tạo khi cần thiết, giúp tiết kiệm bộ nhớ. List lưu trữ tất cả các mục trong bộ nhớ cùng một lúc."
+184,Em hiểu gì về Global Interpreter Lock (GIL) trong Python?,Khó,Concurrency,Software Engineer,"GIL là một mutex chỉ cho phép một luồng thực thi bytecode Python tại một thời điểm, điều này có thể hạn chế hiệu suất của các ứng dụng đa luồng bị ràng buộc bởi CPU."
+185,Decorator trong Python được sử dụng để làm gì?,Trung bình,Programming,Software Engineer,"Decorator là một hàm nhận một hàm khác làm đối số, thêm một số chức năng và trả về hàm đã được sửa đổi mà không thay đổi mã nguồn của hàm ban đầu."
+186,"Mô tả sự khác biệt giữa `let`, `const`, và `var` trong JavaScript.",Dễ,Web Programming,Software Engineer,`var` có phạm vi hàm (function-scoped). `let` và `const` có phạm vi khối (block-scoped). `const` dùng để khai báo hằng số không thể gán lại giá trị.
+187,Promise trong JavaScript là gì?,Trung bình,Web Programming,Software Engineer,Promise là một đối tượng đại diện cho việc hoàn thành (hoặc thất bại) cuối cùng của một hoạt động không đồng bộ.
+188,"Em hãy giải thích khái niệm ""hoisting"" trong JavaScript.",Trung bình,Web Programming,Software Engineer,Hoisting là hành vi mặc định của JavaScript di chuyển tất cả các khai báo lên đầu phạm vi hiện tại trước khi thực thi mã.
+189,Sự khác biệt giữa `localStorage` và `sessionStorage` là gì?,Dễ,Web Programming,Software Engineer,"`localStorage` lưu trữ dữ liệu không có ngày hết hạn. `sessionStorage` lưu trữ dữ liệu cho một phiên, dữ liệu sẽ bị xóa khi tab trình duyệt được đóng."
+190,Arrow function trong ES6 khác với function thông thường như thế nào?,Trung bình,Web Programming,Software Engineer,Arrow function có cú pháp ngắn gọn hơn và không có `this` của riêng nó; nó kế thừa `this` từ phạm vi bao quanh.
+191,Index trong cơ sở dữ liệu là gì và tại sao nó quan trọng?,Trung bình,Database,Software Engineer,Index là một cấu trúc dữ liệu đặc biệt giúp tăng tốc độ truy vấn dữ liệu. Nó cho phép công cụ cơ sở dữ liệu tìm thấy các hàng nhanh hơn.
+192,Transaction trong SQL là gì?,Trung bình,Database,Cả hai,"Transaction là một chuỗi các thao tác được thực hiện như một đơn vị công việc logic duy nhất. Nó phải tuân thủ các thuộc tính ACID (Atomicity, Consistency, Isolation, Durability)."
+193,Giải thích về `JOIN` trong SQL và kể tên một vài loại `JOIN` phổ biến.,Dễ,Database,Cả hai,"`JOIN` được sử dụng để kết hợp các hàng từ hai hoặc nhiều bảng dựa trên một cột liên quan. Các loại phổ biến bao gồm `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, và `FULL OUTER JOIN`."
+194,API Gateway là gì?,Trung bình,System Design,Software Engineer,API Gateway là một điểm vào duy nhất cho tất cả các client. Nó xử lý các yêu cầu bằng cách định tuyến chúng đến các microservice thích hợp.
+195,Load balancer hoạt động như thế nào?,Trung bình,System Design,Software Engineer,"Load balancer phân phối lưu lượng mạng đến qua một nhóm các máy chủ để đảm bảo không có máy chủ nào bị quá tải, cải thiện khả năng đáp ứng và tính sẵn sàng."
+196,Microservices architecture là gì?,Trung bình,Software Design,Software Engineer,"Là một phương pháp phát triển phần mềm trong đó một ứng dụng được cấu trúc như một tập hợp các dịch vụ nhỏ, có thể triển khai độc lập."
+197,Sự khác biệt giữa `PUT` và `PATCH` trong REST API?,Trung bình,Web & API,Software Engineer,`PUT` được sử dụng để cập nhật toàn bộ tài nguyên. `PATCH` được sử dụng để áp dụng các sửa đổi một phần cho tài nguyên.
+198,Em hiểu gì về idempotency trong ngữ cảnh API?,Khó,Web & API,Software Engineer,"Một thao tác là idempotent nếu việc gọi nó nhiều lần có tác dụng tương tự như gọi nó một lần. `GET`, `PUT`, `DELETE` thường là idempotent."
+199,Agile và Scrum khác nhau như thế nào?,Dễ,Methodology,Cả hai,"Agile là một triết lý phát triển lặp đi lặp lại. Scrum là một framework cụ thể để triển khai Agile, với các vai trò, sự kiện và tạo tác được xác định rõ."
+200,User story trong Agile là gì?,Dễ,Methodology,Cả hai,"Là một lời giải thích không chính thức, bằng ngôn ngữ tự nhiên về một tính năng phần mềm được viết từ góc độ của người dùng cuối hoặc khách hàng."
+201,Refactoring là gì? Tại sao chúng ta cần nó?,Trung bình,Software Development,Software Engineer,"Refactoring là quá trình tái cấu trúc mã hiện có mà không thay đổi hành vi bên ngoài của nó. Nó cải thiện khả năng đọc, giảm độ phức tạp và dễ bảo trì hơn."
+202,Code review là gì và mục đích của nó là gì?,Dễ,Software Development,Cả hai,"Code review là việc kiểm tra mã nguồn một cách có hệ thống bởi người khác. Mục đích là để tìm lỗi, cải thiện chất lượng mã và chia sẻ kiến thức."
+203,Sự khác biệt giữa một framework và một library là gì?,Trung bình,Programming Fundamentals,Software Engineer,Một library là một tập hợp các chức năng mà ứng dụng của bạn có thể gọi. Một framework cung cấp một cấu trúc và ứng dụng của bạn điền vào các chi tiết.
+204,"Thế nào là một ""pure function""?",Trung bình,Functional Programming,Software Engineer,Một pure function là một hàm luôn trả về cùng một kết quả cho cùng một đối số và không có tác dụng phụ quan sát được.
+205,Em có biết về nguyên tắc DRY không?,Dễ,Software Design,Software Engineer,DRY (Don't Repeat Yourself) là một nguyên tắc phát triển phần mềm nhằm giảm sự lặp lại của thông tin dưới mọi hình thức.
+206,Binary search hoạt động như thế nào?,Dễ,Algorithms,Software Engineer,"Binary search là một thuật toán tìm kiếm hiệu quả hoạt động trên các mảng đã được sắp xếp. Nó liên tục chia đôi phần của danh sách có thể chứa mục, cho đến khi thu hẹp các vị trí có thể xuống chỉ còn một."
+207,Sự khác biệt giữa `process` và `thread` là gì?,Trung bình,Operating System,Software Engineer,Một process là một chương trình đang được thực thi. Một thread là một đơn vị thực thi nhỏ nhất trong một process. Nhiều thread có thể tồn tại trong cùng một process và chia sẻ tài nguyên.
+208,`git rebase` và `git merge` khác nhau như thế nào?,Khó,Version Control,Cả hai,`git merge` tạo một commit hợp nhất mới. `git rebase` viết lại lịch sử commit bằng cách đặt các commit của bạn lên trên nhánh khác.
+209,Callback hell là gì và làm thế nào để tránh nó?,Trung bình,Web Programming,Software Engineer,"Callback hell là tình trạng các hàm callback được lồng vào nhau nhiều lớp, làm cho mã khó đọc và bảo trì. Có thể tránh bằng cách sử dụng Promises hoặc `async/await`."
+210,Em hiểu gì về `package.json` trong một dự án Node.js?,Dễ,Web Development,Software Engineer,"`package.json` chứa siêu dữ liệu về dự án (tên, phiên bản,...) và liệt kê các gói phụ thuộc cần thiết cho dự án."
+211,GraphQL là gì?,Trung bình,Web & API,Software Engineer,"GraphQL là một ngôn ngữ truy vấn cho API, cho phép client yêu cầu chính xác dữ liệu họ cần, không hơn không kém."
+212,Sự khác biệt giữa `npm` và `yarn` là gì?,Dễ,Tools,Software Engineer,"Cả hai đều là trình quản lý gói cho JavaScript. Yarn được tạo ra để giải quyết các vấn đề về hiệu suất và bảo mật mà npm gặp phải, mặc dù npm đã cải thiện đáng kể."
+213,Em có thể giải thích về DNS không?,Trung bình,Computer Network,Software Engineer,Hệ thống tên miền (DNS) dịch các tên miền mà con người có thể đọc được (ví dụ: www.google.com) thành các địa chỉ IP mà máy tính có thể đọc được.
+214,Latency và Bandwidth khác nhau như thế nào?,Trung bình,Computer Network,Software Engineer,Latency là thời gian trễ để dữ liệu đi từ điểm này đến điểm khác. Bandwidth là lượng dữ liệu tối đa có thể được truyền qua một kết nối trong một khoảng thời gian nhất định.
+215,Sự khác biệt giữa `Authentication` và `Authorization` là gì?,Dễ,Security,Cả hai,Authentication là quá trình xác minh bạn là ai. Authorization là quá trình xác minh những gì bạn được phép làm.
+216,Precision-Recall tradeoff là gì?,Trung bình,Model Evaluation,Data Science,"Là sự cân bằng nghịch đảo giữa precision và recall. Khi tăng precision, recall thường giảm và ngược lại. Việc lựa chọn ngưỡng phụ thuộc vào bài toán cụ thể."
+217,Giải thích thuật toán K-Nearest Neighbors (KNN).,Dễ,ML Algorithms,Data Science,"KNN là một thuật toán học có giám sát. Để phân loại một điểm dữ liệu mới, nó xem xét K điểm dữ liệu gần nhất trong tập huấn luyện và gán nhãn dựa trên đa số."
+218,Thế nào là một feature vector?,Dễ,Data Preparation,Data Science,Một feature vector là một vector n-chiều chứa các đặc trưng số đại diện cho một đối tượng. Nó là đầu vào cho các mô hình học máy.
+219,Sự khác biệt giữa `loc` và `iloc` trong Pandas?,Dễ,Tools,Data Science,`loc` lựa chọn dữ liệu dựa trên nhãn của hàng và cột. `iloc` lựa chọn dữ liệu dựa trên vị trí số nguyên của chúng.
+220,"Tại sao việc chia tập dữ liệu thành train, validation, và test lại quan trọng?",Dễ,Model Evaluation,Data Science,Tập train dùng để huấn luyện mô hình. Tập validation dùng để tinh chỉnh siêu tham số và tránh overfitting. Tập test dùng để đánh giá hiệu suất cuối cùng của mô hình trên dữ liệu chưa từng thấy.
+221,Giải thích thuật toán Naive Bayes.,Trung bình,ML Algorithms,Data Science,"Naive Bayes là một thuật toán phân loại dựa trên định lý Bayes với giả định ""ngây thơ"" về sự độc lập có điều kiện giữa các đặc trưng."
+222,AUC-ROC curve có ý nghĩa gì?,Trung bình,Model Evaluation,Data Science,Đường cong ROC thể hiện khả năng của một mô hình phân loại trong việc phân biệt giữa các lớp ở các ngưỡng khác nhau. AUC (Area Under the Curve) là thước đo tổng thể về hiệu suất này.
+223,Em sẽ xử lý một tập dữ liệu mất cân bằng như thế nào?,Trung bình,Data Imputation,Data Science,"Các phương pháp bao gồm: thu thập thêm dữ liệu, sử dụng các thước đo đánh giá phù hợp (F1-score, AUC), oversampling lớp thiểu số (SMOTE), hoặc undersampling lớp đa số."
+224,Giải thích về `GROUP BY` trong SQL.,Dễ,Database,Data Science,"`GROUP BY` nhóm các hàng có cùng giá trị trong các cột được chỉ định thành các hàng tóm tắt. Nó thường được sử dụng với các hàm tổng hợp như `COUNT`, `MAX`, `MIN`, `SUM`, `AVG`."
+225,Em hiểu gì về learning rate?,Dễ,Optimization,Data Science,Learning rate là một siêu tham số kiểm soát mức độ chúng ta điều chỉnh trọng số của mô hình đối với sai số ước tính mỗi khi trọng số được cập nhật.
+226,Sự khác biệt giữa `model.fit()` và `model.predict()` trong scikit-learn?,Dễ,ML Tooling,Data Science,`model.fit()` được sử dụng để huấn luyện mô hình trên dữ liệu huấn luyện. `model.predict()` được sử dụng để đưa ra dự đoán trên dữ liệu mới.
+227,"Thế nào là ""feature scaling""? Tại sao nó cần thiết?",Dễ,Preprocessing,Data Science,Feature scaling là một phương pháp để chuẩn hóa phạm vi của các biến độc lập. Nó cần thiết vì các mô hình như SVM và KNN nhạy cảm với thang đo của các đặc trưng.
+228,Em có thể giải thích về A/B testing không?,Dễ,Experimentation,Data Science,A/B testing là một phương pháp so sánh hai phiên bản của một trang web hoặc ứng dụng để xác định phiên bản nào hoạt động tốt hơn.
+229,P-value có ý nghĩa gì trong kiểm định giả thuyết?,Trung bình,Statistics,Data Science,"P-value là xác suất quan sát được kết quả ít nhất cũng cực đoan như kết quả thực tế, giả sử rằng giả thuyết không (null hypothesis) là đúng. P-value nhỏ cho thấy bằng chứng chống lại giả thuyết không."
+230,Sự khác biệt giữa `correlation` và `causation`?,Dễ,Statistics,Data Science,Correlation là mối quan hệ thống kê giữa hai biến. Causation có nghĩa là một sự kiện là kết quả của sự xuất hiện của sự kiện kia (tức là quan hệ nhân quả). Tương quan không bao hàm quan hệ nhân quả.
+231,Outlier là gì và làm thế nào để xử lý chúng?,Dễ,Data Cleaning,Data Science,"Outlier là một điểm dữ liệu khác biệt đáng kể so với các quan sát khác. Chúng có thể được xử lý bằng cách loại bỏ, biến đổi (ví dụ: log transform), hoặc sử dụng các mô hình mạnh mẽ với outlier."
+232,Giải thích về `Entropy` và `Information Gain` trong cây quyết định.,Khó,Algorithms,Data Science,Entropy đo lường sự không chắc chắn hoặc ngẫu nhiên trong dữ liệu. Information Gain là sự giảm entropy sau khi một tập dữ liệu được phân chia trên một thuộc tính. Cây quyết định sử dụng Information Gain để chọn thuộc tính phân chia tốt nhất.
+233,Deep Learning là gì?,Dễ,Deep Learning,Data Science,Deep Learning là một lĩnh vực con của học máy dựa trên các mạng nơ-ron nhân tạo với nhiều lớp (mạng nơ-ron sâu).
+234,Em hiểu gì về activation function trong mạng nơ-ron?,Dễ,Deep Learning,Data Science,"Hàm kích hoạt quyết định xem một nơ-ron có nên được kích hoạt hay không. Nó đưa tính phi tuyến vào đầu ra của một nơ-ron, điều này rất quan trọng để học các mẫu phức tạp."
+235,Thế nào là một `epoch` trong huấn luyện mô hình?,Dễ,Training Concepts,Data Science,Một epoch có nghĩa là mỗi mẫu trong tập dữ liệu huấn luyện đã có cơ hội cập nhật các tham số bên trong của mô hình một lần.
+236,"Sự khác nhau giữa `supervised`, `unsupervised`, và `reinforcement learning`?",Dễ,ML Types,Data Science,Học có giám sát học từ dữ liệu được gán nhãn. Học không giám sát tìm thấy các mẫu trong dữ liệu không được gán nhãn. Học tăng cường học cách hành động dựa trên phần thưởng và hình phạt.
+237,"Thế nào là ""dimensionality reduction""?",Trung bình,Dimensionality Reduction,Data Science,"Là quá trình giảm số lượng các biến ngẫu nhiên được xem xét, bằng cách thu được một tập hợp các biến chính."
+238,Em có thể kể tên một vài thư viện Python phổ biến cho Data Science không?,Dễ,Tools,Data Science,"NumPy (tính toán số), Pandas (xử lý dữ liệu), Matplotlib/Seaborn (trực quan hóa), Scikit-learn (học máy), TensorFlow/PyTorch (học sâu)."
+239,Em sẽ đánh giá một mô hình phân cụm (clustering) như thế nào?,Trung bình,Clustering,Data Science,"Nếu có nhãn thực tế, có thể sử dụng Adjusted Rand Index. Nếu không, có thể sử dụng các thước đo nội tại như Silhouette Score hoặc Davies-Bouldin Index."
+240,Time series data là gì?,Dễ,Time Series,Data Science,Là một chuỗi các điểm dữ liệu được lập chỉ mục theo thứ tự thời gian. Nó thường được thu thập tại các điểm thời gian kế tiếp nhau.
+241,Làm thế nào để xử lý `missing values` trong dữ liệu?,Dễ,Data Cleaning,Data Science,"Các phương pháp bao gồm: xóa các hàng/cột bị thiếu, điền giá trị trung bình/trung vị/mode, hoặc sử dụng các thuật toán nâng cao hơn để dự đoán các giá trị bị thiếu."
+242,Em hiểu gì về `Natural Language Processing` (NLP)?,Dễ,NLP,Data Science,"NLP là một lĩnh vực của trí tuệ nhân tạo giúp máy tính hiểu, diễn giải và tạo ra ngôn ngữ của con người."
+243,Bag-of-Words (BoW) model là gì?,Trung bình,NLP,Data Science,BoW là một cách biểu diễn văn bản bỏ qua ngữ pháp và thứ tự từ nhưng giữ lại số lần xuất hiện của từ.
+244,Em có thể giải thích về `Gradient Boosting` không?,Khó,Ensemble Learning,Data Science,"Gradient Boosting xây dựng các mô hình một cách tuần tự, trong đó mỗi mô hình mới sửa lỗi của mô hình trước đó. Nó là một kỹ thuật ensemble learning mạnh mẽ."
+245,Sự khác biệt giữa `Standardization` và `Normalization` là gì?,Trung bình,Preprocessing,Data Science,"Normalization thường co giãn dữ liệu vào một phạm vi [0, 1]. Standardization biến đổi dữ liệu để có giá trị trung bình là 0 và độ lệch chuẩn là 1."
+246,`Lambda function` trong Python là gì?,Dễ,Programming,Data Science,"Là một hàm ẩn danh nhỏ. Nó có thể có bất kỳ số lượng đối số nào, nhưng chỉ có thể có một biểu thức."
+247,Thế nào là `API`?,Dễ,Deployment,Data Science,API (Giao diện lập trình ứng dụng) là một tập hợp các quy tắc cho phép các chương trình phần mềm khác nhau giao tiếp với nhau.
+248,Mục tiêu của A/B testing là gì?,Dễ,Experimentation,Data Science,Mục tiêu chính là để xác định xem một thay đổi mới có cải thiện một thước đo được xác định trước hay không (ví dụ: tỷ lệ chuyển đổi).
+249,Kể tên một vài loại biểu đồ bạn sẽ sử dụng để trực quan hóa dữ liệu.,Dễ,Data Visualization,Data Science,"Biểu đồ thanh (so sánh các danh mục), biểu đồ đường (dữ liệu chuỗi thời gian), biểu đồ phân tán (mối quan hệ giữa hai biến), biểu đồ tròn (thành phần), và histogram (phân phối)."
+250,Em hiểu gì về `Big Data`?,Dễ,Big Data,Data Science,"Big Data đề cập đến các tập dữ liệu cực lớn và phức tạp mà các ứng dụng xử lý dữ liệu truyền thống không thể xử lý. Nó thường được đặc trưng bởi 3V: Volume (khối lượng), Velocity (tốc độ), và Variety (đa dạng)."
+251,Em sẽ làm gì nếu mô hình của bạn hoạt động tốt trên dữ liệu huấn luyện nhưng kém trên dữ liệu thử nghiệm?,Dễ,Model Evaluation,Data Science,"Đây là một dấu hiệu của overfitting. Các giải pháp bao gồm: sử dụng nhiều dữ liệu hơn, đơn giản hóa mô hình, sử dụng kỹ thuật regularization, hoặc dropout."
+252,SQL `window function` là gì?,Khó,Database,Data Science,"Window function thực hiện một phép tính trên một tập hợp các hàng của bảng có liên quan đến hàng hiện tại. Không giống như các hàm tổng hợp, nó không làm cho các hàng được nhóm lại thành một hàng đầu ra duy nhất."
+253,Collinearity trong hồi quy là gì?,Trung bình,Statistical Modeling,Data Science,Collinearity (hay multicollinearity) xảy ra khi hai hoặc nhiều biến độc lập trong một mô hình hồi quy có mối tương quan cao với nhau. Điều này có thể làm cho việc giải thích mô hình trở nên khó khăn.
+254,Em có thể giải thích về `ETL` process không?,Trung bình,Data Pipeline,Data Science,"ETL là viết tắt của Extract, Transform, Load. Đó là một quá trình tích hợp dữ liệu trong đó dữ liệu được thu thập (extract) từ các nguồn khác nhau, chuyển đổi (transform) thành một định dạng phù hợp, và sau đó được tải (load) vào một kho dữ liệu."
+255,Em sẽ chọn một mô hình dựa trên tiêu chí nào?,Trung bình,Model Selection,Data Science,"Các tiêu chí bao gồm: độ chính xác, khả năng diễn giải, độ phức tạp, khả năng mở rộng, và thời gian huấn luyện, tùy thuộc vào yêu cầu của bài toán."
+256,Điểm mạnh lớn nhất của bạn là gì?,Dễ,Soft Skills,Cả hai,"Hãy chọn một điểm mạnh liên quan đến công việc (ví dụ: ham học hỏi, khả năng giải quyết vấn đề, kỹ năng giao tiếp) và đưa ra một ví dụ cụ thể."
+257,Điểm yếu lớn nhất của bạn là gì?,Dễ,Soft Skills,Cả hai,"Chọn một điểm yếu thực sự nhưng không phải là yếu tố cốt lõi của công việc. Quan trọng hơn, hãy cho thấy bạn đang làm gì để cải thiện nó."
+258,Mục tiêu nghề nghiệp của bạn trong 5 năm tới là gì?,Dễ,Soft Skills,Cả hai,Câu trả lời nên cho thấy sự tham vọng nhưng cũng thực tế và phù hợp với con đường sự nghiệp mà vị trí này mang lại.
+259,Mô tả một lần bạn gặp khó khăn trong một dự án và cách bạn vượt qua nó.,Dễ,Soft Skills,Cả hai,"Sử dụng phương pháp STAR (Situation, Task, Action, Result) để cấu trúc câu trả lời của bạn một cách rõ ràng."
+260,Bạn thích làm việc độc lập hay làm việc nhóm?,Dễ,Soft Skills,Cả hai,Một câu trả lời tốt cho thấy bạn có thể làm việc hiệu quả trong cả hai môi trường và nhận ra giá trị của cả hai.
+261,Làm thế nào để bạn cập nhật kiến thức về công nghệ mới?,Dễ,Soft Skills,Cả hai,"Đề cập đến các blog công nghệ, tài liệu chính thức, các khóa học trực tuyến, hội thảo, hoặc các dự án cá nhân."
+262,Mô tả một lần bạn không đồng ý với một thành viên trong nhóm. Bạn đã xử lý nó như thế nào?,Dễ,Teamwork,Cả hai,"Tập trung vào việc lắng nghe, giao tiếp một cách tôn trọng và tìm kiếm một giải pháp chung hoặc thỏa hiệp."
+263,Điều gì thúc đẩy bạn?,Dễ,Soft Skills,Cả hai,"Liên kết động lực của bạn với các khía cạnh của công việc, chẳng hạn như giải quyết các vấn đề thách thức, học hỏi những điều mới, hoặc tạo ra tác động."
+264,Tại sao bạn muốn làm việc cho công ty chúng tôi?,Dễ,Soft Skills,Cả hai,"Nghiên cứu về công ty và đề cập đến các khía cạnh cụ thể mà bạn ngưỡng mộ, chẳng hạn như văn hóa, sản phẩm, hoặc sứ mệnh của họ."
+265,Bạn sẽ làm gì trong 30 ngày đầu tiên nếu được nhận?,Dễ,Soft Skills,Cả hai,"Câu trả lời của bạn nên cho thấy sự chủ động, tập trung vào việc học hỏi về công ty, team, và các công cụ, cũng như bắt đầu đóng góp một cách nhanh chóng."
+266,Mô tả một dự án mà bạn tự hào nhất.,Dễ,Experience,Cả hai,Chọn một dự án thể hiện được các kỹ năng kỹ thuật và kỹ năng mềm của bạn. Giải thích vai trò của bạn và kết quả đạt được.
+267,Làm thế nào để bạn xử lý áp lực hoặc các deadline gấp?,Dễ,Soft Skills,Cả hai,"Đề cập đến các kỹ năng quản lý thời gian, chẳng hạn như ưu tiên công việc, chia nhỏ các nhiệm vụ, và tập trung vào những gì quan trọng nhất."
+268,Bạn định nghĩa thành công như thế nào?,Dễ,Soft Skills,Cả hai,"Câu trả lời có thể liên quan đến việc đạt được mục tiêu, học hỏi và phát triển, hoặc đóng góp vào thành công của nhóm và công ty."
+269,Làm thế nào để bạn nhận phản hồi mang tính xây dựng?,Dễ,Soft Skills,Cả hai,"Thể hiện rằng bạn xem phản hồi là một cơ hội để phát triển, lắng nghe một cách cởi mở và không phòng thủ."
+270,Bạn có câu hỏi nào cho chúng tôi không?,Dễ,Soft Skills,Cả hai,"Luôn chuẩn bị một vài câu hỏi sâu sắc về vai trò, nhóm, văn hóa công ty, hoặc các thách thức. Điều này cho thấy sự quan tâm thực sự của bạn."
+271,Mô tả một lần bạn phải học một kỹ năng mới một cách nhanh chóng.,Dễ,Self-learning,Cả hai,"Giải thích tình huống, cách bạn tiếp cận việc học (ví dụ: tài liệu, hướng dẫn, thực hành), và kết quả."
+272,Sở thích của bạn ngoài công việc là gì?,Dễ,Soft Skills,Cả hai,Câu hỏi này giúp người phỏng vấn hiểu thêm về con người bạn. Hãy trung thực và chia sẻ những gì bạn đam mê.
+273,Bạn đối phó với sự mơ hồ như thế nào?,Dễ,Soft Skills,Cả hai,"Thể hiện khả năng đặt câu hỏi để làm rõ, chia nhỏ các vấn đề phức tạp, và cảm thấy thoải mái khi thực hiện các bước nhỏ để tiến về phía trước."
+274,Mô tả một lần bạn mắc sai lầm trong công việc và bạn đã học được gì từ nó.,Dễ,Soft Skills,Cả hai,"Thể hiện sự trung thực, trách nhiệm và quan trọng nhất là khả năng học hỏi từ những sai lầm để không lặp lại chúng."
+275,Làm thế nào để bạn ưu tiên các công việc của mình?,Dễ,Soft Skills,Cả hai,Đề cập đến các phương pháp như ma trận Eisenhower (khẩn cấp/quan trọng) hoặc thảo luận với người quản lý để hiểu rõ các ưu tiên.
+276,Điều gì làm bạn khác biệt so với các ứng viên khác?,Dễ,Soft Skills,Cả hai,"Tập trung vào sự kết hợp độc đáo giữa các kỹ năng, kinh nghiệm và niềm đam mê của bạn. Liên kết chúng với các yêu cầu của công việc."
+277,Mô tả môi trường làm việc lý tưởng của bạn.,Dễ,Soft Skills,Cả hai,"Mô tả một môi trường mà bạn có thể phát triển mạnh, chẳng hạn như môi trường hợp tác, có cơ hội học hỏi, và có sự cân bằng giữa công việc và cuộc sống."
+278,Bạn xử lý một người đồng nghiệp khó tính như thế nào?,Dễ,Teamwork,Cả hai,"Tập trung vào việc giữ thái độ chuyên nghiệp, cố gắng hiểu quan điểm của họ, và tập trung vào các mục tiêu chung của công việc."
+279,Làm thế nào để bạn giải thích một khái niệm kỹ thuật phức tạp cho một người không có chuyên môn?,Dễ,Communication,Cả hai,"Đề cập đến việc sử dụng các phép loại suy, tránh biệt ngữ, và tập trung vào ""tại sao"" và ""cái gì"" thay vì ""như thế nào""."
+280,Thất bại lớn nhất của bạn là gì?,Dễ,Soft Skills,Cả hai,"Tương tự như câu hỏi về điểm yếu, hãy chọn một thất bại thực sự và tập trung vào những gì bạn đã học được từ trải nghiệm đó."
+281,Bạn có bao giờ phải thuyết phục ai đó đi theo ý tưởng của mình không?,Dễ,Communication,Cả hai,"Giải thích cách bạn sử dụng dữ liệu, logic, và sự đồng cảm để trình bày trường hợp của mình một cách hiệu quả."
+282,Làm thế nào để bạn giữ cho mình có tổ chức?,Dễ,Soft Skills,Cả hai,"Đề cập đến các công cụ hoặc phương pháp bạn sử dụng, chẳng hạn như danh sách công việc, lịch, hoặc các ứng dụng quản lý dự án."
+283,Bạn xử lý các nhiệm vụ lặp đi lặp lại hoặc nhàm chán như thế nào?,Dễ,Soft Skills,Cả hai,Thể hiện sự hiểu biết rằng tất cả các công việc đều có những khía cạnh này và bạn có thể duy trì sự tập trung và chú ý đến chi tiết. Có thể đề cập đến việc tự động hóa nếu có thể.
+284,Bạn có thể mô tả một nhà lãnh đạo giỏi không?,Dễ,Soft Skills,Cả hai,"Mô tả các phẩm chất như khả năng truyền cảm hứng, giao tiếp rõ ràng, hỗ trợ nhóm, và trao quyền cho các thành viên."
+285,Khi nào bạn cảm thấy hài lòng nhất trong công việc?,Dễ,Soft Skills,Cả hai,"Liên kết sự hài lòng của bạn với các hoạt động cốt lõi của vai trò, chẳng hạn như hoàn thành một dự án khó, giải quyết một lỗi phức tạp, hoặc khi nhóm của bạn thành công."
+286,Em xử lý như thế nào khi không biết câu trả lời cho một vấn đề kỹ thuật?,Dễ,Problem Solving,Cả hai,"Em sẽ bắt đầu bằng cách nghiên cứu tài liệu, tìm kiếm các vấn đề tương tự trên mạng, thử nghiệm các giải pháp khả thi, và nếu vẫn bế tắc, em sẽ hỏi đồng nghiệp hoặc mentor."
+287,Mô tả một lần em phải làm việc với một yêu cầu không rõ ràng.,Dễ,Soft Skills,Cả hai,"Em sẽ chủ động đặt câu hỏi với người giao nhiệm vụ để làm rõ các yêu cầu, đề xuất các ví dụ hoặc kịch bản để đảm bảo em hiểu đúng ý."
+288,Làm thế nào em cân bằng giữa chất lượng code và việc hoàn thành đúng deadline?,Dễ,Soft Skills,Cả hai,"Em sẽ cố gắng viết code sạch ngay từ đầu, nhưng nếu deadline quá gấp, em sẽ ưu tiên hoàn thành chức năng chính và tạo ghi chú (TODO) để refactor sau. Em sẽ trao đổi với quản lý về các rủi ro kỹ thuật."
+289,Điều gì ở vị trí thực tập này thu hút em?,Dễ,Soft Skills,Cả hai,"Nói về cơ hội học hỏi các công nghệ cụ thể, được làm việc trong một môi trường chuyên nghiệp, hoặc đóng góp vào các dự án thực tế mà công ty đang thực hiện."
+290,Em thích học hỏi theo cách nào nhất?,Dễ,Self-learning,Cả hai,"Ví dụ: qua việc đọc tài liệu, xem video hướng dẫn, thực hành qua các dự án nhỏ, hoặc học hỏi từ việc review code của người khác."
+291,Làm sao để đảm bảo công việc của mình đáp ứng được kỳ vọng?,Dễ,Soft Skills,Cả hai,"Em sẽ thường xuyên cập nhật tiến độ với mentor/quản lý, đặt câu hỏi khi không chắc chắn, và yêu cầu phản hồi sớm để có thể điều chỉnh kịp thời."
+292,Mô tả một lần em chủ động đề xuất một ý tưởng cải tiến.,Dễ,Soft Skills,Cả hai,"Ngay cả khi đó là một cải tiến nhỏ trong một dự án ở trường, hãy giải thích ý tưởng của em, tại sao em đề xuất nó và kết quả là gì."
+293,Em làm gì khi cảm thấy bị quá tải công việc?,Dễ,Soft Skills,Cả hai,"Em sẽ xem xét lại danh sách công việc, ưu tiên những gì quan trọng nhất và trao đổi với mentor hoặc quản lý để được hỗ trợ sắp xếp lại hoặc tìm kiếm sự giúp đỡ."
+294,Sự khác biệt giữa một thực tập sinh tốt và một thực tập sinh xuất sắc là gì?,Dễ,Soft Skills,Cả hai,"Một thực tập sinh xuất sắc không chỉ hoàn thành nhiệm vụ được giao mà còn chủ động đặt câu hỏi, tìm hiểu sâu hơn về hệ thống, đề xuất cải tiến và luôn thể hiện thái độ ham học hỏi."
+295,Em mong đợi gì từ người mentor của mình?,Dễ,Soft Skills,Cả hai,"Em mong đợi sự hướng dẫn về kỹ thuật, định hướng về công việc, những phản hồi thẳng thắn để em có thể cải thiện và cơ hội để học hỏi từ kinh nghiệm của họ."
+296,Em có thoải mái khi làm việc trong một môi trường có nhịp độ nhanh không?,Dễ,Soft Skills,Cả hai,Hãy thể hiện sự linh hoạt và khả năng thích ứng của bạn. Có thể đưa ra ví dụ về việc bạn đã quản lý nhiều môn học hoặc dự án cùng một lúc.
+297,Làm thế nào để em đóng góp vào văn hóa của nhóm?,Dễ,Teamwork,Cả hai,"Em có thể đóng góp bằng cách luôn có thái độ tích cực, sẵn sàng giúp đỡ người khác, chia sẻ những gì em học được, và tham gia vào các hoạt động của nhóm."
+298,Mô tả một tình huống em phải đưa ra một quyết định nhanh chóng.,Dễ,Soft Skills,Cả hai,"Tập trung vào cách em phân tích thông tin có sẵn một cách nhanh chóng, cân nhắc các lựa chọn và đưa ra quyết định hợp lý nhất trong hoàn cảnh đó."
+299,"Em làm thế nào để đảm bảo rằng mình luôn có động lực, ngay cả khi làm những công việc không mấy thú vị?",Dễ,Soft Skills,Cả hai,Em sẽ cố gắng hiểu mục đích lớn hơn của công việc đó và nó đóng góp như thế nào vào dự án chung. Em cũng xem đó là cơ hội để rèn luyện tính kỷ luật.
+300,"Cuối kỳ thực tập này, em muốn học được điều gì nhất?",Dễ,Soft Skills,Cả hai,"Hãy đặt ra một mục tiêu cụ thể, ví dụ: ""Em muốn hiểu rõ quy trình phát triển phần mềm chuyên nghiệp từ đầu đến cuối"", hoặc ""Em muốn thành thạo một công nghệ cụ thể và có thể tự tin đóng góp vào một tính năng nhỏ""."
