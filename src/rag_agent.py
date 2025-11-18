@@ -1,41 +1,42 @@
-import os
 import json
 
 from mistralai import Mistral
 from langchain_community.retrievers import ArxivRetriever
 from langchain_mistralai import ChatMistralAI
-from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
-from llama_index import VectorStoreIndex, SimpleDirectoryReader, ServiceContext
+from llama_index import VectorStoreIndex, ServiceContext
 from llama_index.embeddings import LangchainEmbedding
 
 
-mistral_api_key = os.getenv('MISTRAL_API_KEY')
-tavily_api_key = os.getenv('TAVILY_API_KEY')
-
-docs=SimpleDirectoryReader(input_dir="/rag_data").load_data()
-
 class RagAgent:
-    def __init__(self, model: str = "mistral-small-latest"):
+    def __init__(self, docs, mistral_api_key: str, model: str = "mistral-small-latest"):
+        print('внутри рага')
         self._client = Mistral(api_key=mistral_api_key)
         self._model = model
+        print('1')
 
         self.llm = ChatMistralAI(
             model=model,
             max_retries=2,
             api_key=mistral_api_key
         )
+        print('2')
 
-        self.embed_model=LangchainEmbedding(HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2"))
+        self.embed_model = LangchainEmbedding(HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2"))
+        print('3')
 
         self.service_context = ServiceContext.from_defaults(
             chunk_size=1024,
             llm=self.llm,
             embed_model=self.embed_model
         )
+        print('4')
 
         self.index=VectorStoreIndex.from_documents(docs, service_context=self.service_context)
+        print('5')
         self.query_engine=self.index.as_query_engine()
+        print('Инициализация рага завершена')
 
     def set_user_info(self, name, interview_scope, difficulty):
         self.name = name
@@ -49,7 +50,7 @@ class RagAgent:
         docs_text = "\n\n".join([doc.page_content for doc in docs])
 
         prompt = f"""Ты - эксперт IT в области {self.interview_scope}, который подробно и \
-                  и полно, дотупным языком отвечет на вопросы технических собеседований и дает справочную информацию.\
+                  и полно, доступным языком отвечает на вопросы технических собеседований и дает справочную информацию.\
                   Твоя задача - дать полный развернутый ответ на задаваемый вопрос или дополнить ответ, если он уже есть в запросе.\
                   Отвечай только на вопросы по теме собеседования!\
 
@@ -58,7 +59,7 @@ class RagAgent:
 
                   ЗАМЕЧАНИЕ: Если тебя спросят на отвлеченную тему, вежливо ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ и расскажи про какую-нибудь другую полезную IT штуку, \
                   связанную с {self.interview_scope} \
-                  (ВЕЖЛИВО ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ, а потом используй слова: Давайте я лучше раскажу вам про...) \
+                  (ВЕЖЛИВО ПРЕДЛОЖИ ВЕРНУТЬСЯ К СОБЕСЕДОВАНИЮ, а потом используй слова: Давайте я лучше расскажу вам про...) \
                   ## Docs {docs_text}"""
 
         response = self._client.chat.complete(
@@ -72,12 +73,12 @@ class RagAgent:
         return response.choices[0].message.content
 
     def get_next_interview_question(self, question=""):
-        prompt = f"Теперь ты выступаешь в роли системы-интревьюера, в которой хранится много вопросов с технических собеседований. \
+        prompt = f"Теперь ты выступаешь в роли системы-интервьюера, в которой хранится много вопросов с технических собеседований. \
           Задай мне вопрос из сферы {self.interview_scope} со сложностью {self.difficulty}. \
           Если возможно - приведи ПОДРОБНЫЙ, но ЛАКОНИЧНЫЙ ответ на этот вопрос, который ожидает интервьюер. \
           Будь максимально аккуратен и не добавляй лишний текст. \
           ФОРМАТ: json с полями question и answer. \
-          Оставь в поле answer "", если у тебя нет ответа на заднный вопрос. \
+          Оставь в поле answer "", если у тебя нет ответа на заданный вопрос. \
           Вопрос нужно задать на РУССКОМ языке (общеупотребимые термины сферы можно оставить на английском)"
         
         question = question if question else prompt
@@ -118,5 +119,3 @@ class RagAgent:
         )
 
         return response.choices[0].message.content
-
-rag_bot = RagAgent()
