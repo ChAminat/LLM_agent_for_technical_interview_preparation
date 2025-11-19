@@ -26,7 +26,7 @@ if not MISTRAL_API_KEY:
     raise ValueError("MISTRAL_API_KEY не найден в .env файле")
 
 dp = Dispatcher()
-docs = SimpleDirectoryReader(input_dir="../rag_data").load_data()
+docs = SimpleDirectoryReader(input_dir="rag_data").load_data()
 interview_sessions = {}
 
 
@@ -227,8 +227,11 @@ async def next_question_handler(message: Message) -> None:
     
     session["conversation_history"].append({"role": "interviewer", "content": next_question})
     session["current_question"] = next_question
-    
-    await message.answer(next_question['question'], reply_markup=get_interview_keyboard())
+
+    if isinstance(next_question, str):
+        await message.answer(next_question, reply_markup=get_interview_keyboard())
+    else:
+        await message.answer(next_question['question'], reply_markup=get_interview_keyboard())
 
 
 @dp.message(F.text == "Задать вопрос ❓")
