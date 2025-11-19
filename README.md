@@ -15,8 +15,6 @@
 ```
 Пользователь ↔ Telegram Bot ↔ Interview Agent ↔ RAG System ↔ Searching/Evaluation Model
 
-```
-
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Telegram Bot  │ ── │   Agent Service  │ ── │    RAG System   │
 │                 │    │                  │    │                 │
@@ -35,6 +33,8 @@
                        │ - Генерация      │
                        │   вердиктов      │
                        └──────────────────┘
+
+```
                        
 ## Компоненты системы
 
